@@ -174,6 +174,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4591726322443969367, guid: c8544fa002290cf458cff78dd4034ee1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 7326607662346735208, guid: c8544fa002290cf458cff78dd4034ee1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 8429102940315671862, guid: c8544fa002290cf458cff78dd4034ee1,
         type: 3}
       propertyPath: m_NavMeshLayer
