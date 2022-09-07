@@ -23,8 +23,8 @@ namespace Bies
         {
             Instance = this;
 
-            int gridWidth = 5;
-            int gridLength = 5;
+            int gridWidth = 10;
+            int gridLength = 10;
             float cellSize = 10f;
             grid = new(gridWidth, gridLength, cellSize, Vector3.zero, (g, x, z) => { return new(g, x, z); });
 
@@ -56,7 +56,7 @@ namespace Bies
             if (Input.GetMouseButtonDown(1))
             {
                 var gridObject = grid.GetGridObject(Mouse3D.GetMouseWorldPosition());
-                var placedObject = gridObject.GetPlacedObject();
+                var placedObject = gridObject?.GetPlacedObject();
                 if (placedObject != null)
                 {
                     var gridPositionList = placedObject.GetGridPositionList();
