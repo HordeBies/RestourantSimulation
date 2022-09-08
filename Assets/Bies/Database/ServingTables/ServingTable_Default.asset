@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae72f13785bbbc43a57c641753ad7cb, type: 3}
+  m_Name: ServingTable_Default
+  m_EditorClassIdentifier: 
+  nameString: Default Serving Table
+  icon: {fileID: 0}
+  prefab: {fileID: 6769255032000720841, guid: 1601d90a7254e2c4faadf1e1b6a0995c, type: 3}
+  visual: {fileID: 6769255032000720841, guid: 1601d90a7254e2c4faadf1e1b6a0995c, type: 3}
+  width: 1
+  length: 1

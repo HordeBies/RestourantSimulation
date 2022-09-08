@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865177e92e24470468e6f8d17c02dc14, type: 3}
+  m_Name: CookingOven_Default
+  m_EditorClassIdentifier: 
+  nameString: Default Cooking Oven
+  icon: {fileID: 0}
+  prefab: {fileID: 3694927253147208259, guid: 6eb95fe4dc6f5ee44aa533cd29a4b713, type: 3}
+  visual: {fileID: 3694927253147208259, guid: 6eb95fe4dc6f5ee44aa533cd29a4b713, type: 3}
+  width: 1
+  length: 1
