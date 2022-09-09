@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ae72f13785bbbc43a57c641753ad7cb, type: 3}
+  m_Script: {fileID: 11500000, guid: fbd46b8a8a8ffda4891cc68e0b1cd861, type: 3}
   m_Name: ServingTable_Default
   m_EditorClassIdentifier: 
+  Type: 5
   nameString: Default Serving Table
   icon: {fileID: 0}
   prefab: {fileID: 6769255032000720841, guid: 1601d90a7254e2c4faadf1e1b6a0995c, type: 3}

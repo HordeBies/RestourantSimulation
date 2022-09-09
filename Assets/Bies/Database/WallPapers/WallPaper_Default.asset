@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5b2e160abfd5042ad5afdb92c85698, type: 3}
+  m_Script: {fileID: 11500000, guid: fbd46b8a8a8ffda4891cc68e0b1cd861, type: 3}
   m_Name: WallPaper_Default
   m_EditorClassIdentifier: 
+  Type: 6
   nameString: Default WallPaper
   icon: {fileID: 21300000, guid: c171980068637a643859243e7a664463, type: 3}
   prefab: {fileID: 4782235985580720507, guid: 999459752c06c094ebe57dfe323114ce, type: 3}

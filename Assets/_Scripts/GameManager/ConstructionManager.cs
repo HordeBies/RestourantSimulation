@@ -11,7 +11,8 @@ public class ConstructionManager : MonoBehaviour
     public static ConstructionManager instance;
 
     public static Action<GridObject> OnSelectedChanged;
-    public static event EventHandler OnObjectPlaced;
+    public static Action<PlacedObject> OnObjectPlaced;
+    public static Action<PlacedObject> OnObjectRemoved;
 
     private GridXZ<CafeGridTile> CafeGrid;
 
@@ -77,7 +78,14 @@ public class ConstructionManager : MonoBehaviour
             return Quaternion.identity;
         }
     }
-    public void TestBuild(int x, int z,GridObject.Dir newDir, GridObject newSelectedGridObject)
+    public void Spawn(Vector2Int pos, GridObject.Dir newDir, GridObject newSelectedGridObject)
+    {
+        int x = pos.x;
+        int z = pos.y;
+        Spawn(x, z, newDir, newSelectedGridObject);
+    }
+
+    public void Spawn(int x, int z,GridObject.Dir newDir, GridObject newSelectedGridObject)
     {
         dir = newDir;
         selectedGridObject = newSelectedGridObject;
@@ -94,7 +102,7 @@ public class ConstructionManager : MonoBehaviour
             var placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), dir, selectedGridObject);
             gridPositionList.ForEach(position => CafeGrid.GetGridObject(position.x, position.y).SetPlacedObject(placedObject));
 
-            OnObjectPlaced?.Invoke(this, EventArgs.Empty);
+            OnObjectPlaced?.Invoke(placedObject);
         }
         else
             UtilsClass.CreateWorldTextPopup("Cannot build here!", Mouse3D.GetMouseWorldPosition());
@@ -118,7 +126,7 @@ public class ConstructionManager : MonoBehaviour
             var placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), dir, selectedGridObject);
             gridPositionList.ForEach(position => CafeGrid.GetGridObject(position.x, position.y).SetPlacedObject(placedObject));
 
-            OnObjectPlaced?.Invoke(this, EventArgs.Empty);
+            OnObjectPlaced?.Invoke(placedObject);
         }
         else
             UtilsClass.CreateWorldTextPopup("Cannot build here!", Mouse3D.GetMouseWorldPosition());
@@ -139,6 +147,7 @@ public class ConstructionManager : MonoBehaviour
         {
             var gridPositionList = placedObject.GetGridPositionList();
             gridPositionList.ForEach(position => CafeGrid.GetGridObject(position.x, position.y).ClearPlacedObject());
+            OnObjectRemoved?.Invoke(placedObject);
             placedObject.DestroySelf();
         }
     }
@@ -161,6 +170,7 @@ public class CafeGridTile
     private PlacedObject placedObject;
     private PlacedObject floorTile;
     private static PlacedObject doorTile;
+    public static PlacedObject DoorTile => doorTile;
 
     public bool CanBuild(GridObject gridObject)
     {

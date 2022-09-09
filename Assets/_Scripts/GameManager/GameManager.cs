@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         playerInput = GetComponent<PlayerInput>();
+        CafeSimulationManager.GetDoorTile = () => CafeGridTile.DoorTile;
         
     }
     private void FixedUpdate()
@@ -40,5 +41,12 @@ public class GameManager : MonoBehaviour
         ConstructionManager.instance.ResetSelectedGridObjectSO();
         gameState = GameState.Default;
     }
+
+    #region DatabaseBindings
+    public GridObject GetRandomCustomer()
+    {
+        return Database.Customers[Random.Range(0,Database.Customers.Count)];
+    }
+    #endregion
 
 }

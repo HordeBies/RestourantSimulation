@@ -26,8 +26,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6a0f7021990f9cb47b64c705d726ed15, type: 2}
   doors:
   - {fileID: 11400000, guid: ada029da998abcf4db7dd38cd3c27a9b, type: 2}
-  chefs: []
-  servers: []
-  Customers: []
+  chefs:
+  - {fileID: 11400000, guid: 4044852b8b17c7e408d96956deb3f9c0, type: 2}
+  servers:
+  - {fileID: 11400000, guid: 4a530f01936597d418d847e124c4df36, type: 2}
+  customers:
+  - {fileID: 11400000, guid: 0fb2ed6804268a2419b9e6fbb3707eae, type: 2}
   uiSlotPrefab: {fileID: 2138007873129294427, guid: c101d743788b1b9478e50fd736129b4b,
     type: 3}

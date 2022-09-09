@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 865177e92e24470468e6f8d17c02dc14, type: 3}
+  m_Script: {fileID: 11500000, guid: fbd46b8a8a8ffda4891cc68e0b1cd861, type: 3}
   m_Name: CookingOven_Default
   m_EditorClassIdentifier: 
+  Type: 2
   nameString: Default Cooking Oven
   icon: {fileID: 0}
   prefab: {fileID: 3694927253147208259, guid: 6eb95fe4dc6f5ee44aa533cd29a4b713, type: 3}

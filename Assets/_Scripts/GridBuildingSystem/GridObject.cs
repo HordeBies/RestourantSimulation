@@ -14,11 +14,11 @@ public enum ObjectType
     Door,
 
     Customer,
-    Cooker,
+    Chef,
     Server,
 }
-
-public abstract class GridObject : ScriptableObject
+[CreateAssetMenu(fileName ="GridObject_",menuName ="Bies/GridObject")]
+public class GridObject : ScriptableObject
 {
     public enum Dir
     {
@@ -27,7 +27,6 @@ public abstract class GridObject : ScriptableObject
         Up,
         Right,
     }
-    public abstract ObjectType Type { get; }
     public static Dir GetNextDir(Dir dir)
     {
         switch (dir)
@@ -39,6 +38,18 @@ public abstract class GridObject : ScriptableObject
             case Dir.Right: return Dir.Down;
         }
     }
+    public static Dir GetReverseDir(Dir dir)
+    {
+        switch (dir)
+        {
+            default:
+            case Dir.Down: return Dir.Up;
+            case Dir.Left: return Dir.Right;
+            case Dir.Up: return Dir.Down;
+            case Dir.Right: return Dir.Left;
+        }
+    }
+    public ObjectType Type;
     public string nameString;
     public Sprite icon;
     public Transform prefab;

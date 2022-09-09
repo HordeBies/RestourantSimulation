@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b135841e0e62fd7469856bc3239036ab, type: 3}
+  m_Script: {fileID: 11500000, guid: fbd46b8a8a8ffda4891cc68e0b1cd861, type: 3}
   m_Name: Server_Default
   m_EditorClassIdentifier: 
+  Type: 10
   nameString: Default Server
   icon: {fileID: 0}
   prefab: {fileID: 7921875928063873020, guid: bf3eb323ba9703d4996c77acfb674a1e, type: 3}

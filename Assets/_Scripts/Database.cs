@@ -5,13 +5,16 @@ using UnityEngine;
 public class Database : ScriptableObject
 {
     public static Database instance;
-    public static List<FloorTile> FloorTiles => instance.floorTiles;
-    public static List<WallPaper> WallPapers => instance.wallPapers;
-    public static List<Chair> Chairs => instance.chairs;
-    public static List<DiningTable> DiningTables => instance.diningTables;
-    public static List<Door> Doors => instance.doors;
-    public static List<CookingOven> CookingOvens => instance.cookingOvens;
-    public static List<ServingTable> ServingTables => instance.servingTables;
+    public static List<GridObject> FloorTiles => instance.floorTiles;
+    public static List<GridObject> WallPapers => instance.wallPapers;
+    public static List<GridObject> Chairs => instance.chairs;
+    public static List<GridObject> DiningTables => instance.diningTables;
+    public static List<GridObject> Doors => instance.doors;
+    public static List<GridObject> CookingOvens => instance.cookingOvens;
+    public static List<GridObject> ServingTables => instance.servingTables;
+    public static List<GridObject> Chefs => instance.chefs;
+    public static List<GridObject> Servers => instance.servers;
+    public static List<GridObject> Customers => instance.customers;
 
 
     public static UISlot UISlotPrefab => instance.uiSlotPrefab;
@@ -20,17 +23,17 @@ public class Database : ScriptableObject
         instance = this;
     }
 
-    [SerializeField] private List<FloorTile> floorTiles;
-    [SerializeField] private List<WallPaper> wallPapers;
-    [SerializeField] private List<Chair> chairs;
-    [SerializeField] private List<DiningTable> diningTables;
-    [SerializeField] private List<ServingTable> servingTables;
-    [SerializeField] private List<CookingOven> cookingOvens;
-    [SerializeField] private List<Door> doors;
+    [SerializeField] private List<GridObject> floorTiles;
+    [SerializeField] private List<GridObject> wallPapers;
+    [SerializeField] private List<GridObject> chairs;
+    [SerializeField] private List<GridObject> diningTables;
+    [SerializeField] private List<GridObject> servingTables;
+    [SerializeField] private List<GridObject> cookingOvens;
+    [SerializeField] private List<GridObject> doors;
 
-    [SerializeField] private List<Cooker> cookers;
-    [SerializeField] private List<Server> servers;
-    [SerializeField] private List<Customer> customers;
+    [SerializeField] private List<GridObject> chefs;
+    [SerializeField] private List<GridObject> servers;
+    [SerializeField] private List<GridObject> customers;
 
     [SerializeField] private UISlot uiSlotPrefab;
 }

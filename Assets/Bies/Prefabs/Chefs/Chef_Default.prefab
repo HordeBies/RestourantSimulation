@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 2881189168730863564}
   - component: {fileID: 5386563893481095584}
   m_Layer: 0
-  m_Name: Cooker_Default
+  m_Name: Chef_Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

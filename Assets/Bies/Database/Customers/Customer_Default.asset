@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5505a789c999e2243a48f7017258e3ba, type: 3}
+  m_Script: {fileID: 11500000, guid: fbd46b8a8a8ffda4891cc68e0b1cd861, type: 3}
   m_Name: Customer_Default
   m_EditorClassIdentifier: 
+  Type: 8
   nameString: Default Customer
   icon: {fileID: 0}
   prefab: {fileID: 1446641072577973272, guid: b0512cab5e63c3f429659709be95ab2c, type: 3}

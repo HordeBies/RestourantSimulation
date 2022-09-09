@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58842b527a0757f469fe66ec6d82c719, type: 3}
-  m_Name: Cooker_Default
+  m_Script: {fileID: 11500000, guid: fbd46b8a8a8ffda4891cc68e0b1cd861, type: 3}
+  m_Name: Chef_Default
   m_EditorClassIdentifier: 
-  nameString: Default Cooker
+  Type: 9
+  nameString: Default Chef
   icon: {fileID: 0}
   prefab: {fileID: 1932636370359880211, guid: 4ff3a5d83d8397b4e85d556959b31177, type: 3}
   visual: {fileID: 1932636370359880211, guid: 4ff3a5d83d8397b4e85d556959b31177, type: 3}

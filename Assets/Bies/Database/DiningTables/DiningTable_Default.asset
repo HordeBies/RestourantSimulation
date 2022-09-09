@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25643213abddc574e9ef91b2e4113421, type: 3}
+  m_Script: {fileID: 11500000, guid: fbd46b8a8a8ffda4891cc68e0b1cd861, type: 3}
   m_Name: DiningTable_Default
   m_EditorClassIdentifier: 
+  Type: 3
   nameString: Default Dining Table
   icon: {fileID: 0}
   prefab: {fileID: 1151263135451177714, guid: 29543e288ed795046917e3ccfdfa588b, type: 3}
