@@ -28,9 +28,9 @@ public class Database : ScriptableObject
     [SerializeField] private List<CookingOven> cookingOvens;
     [SerializeField] private List<Door> doors;
 
-    [SerializeField] private List<Cooker> chefs;
+    [SerializeField] private List<Cooker> cookers;
     [SerializeField] private List<Server> servers;
-    [SerializeField] private List<Customer> Customers;
+    [SerializeField] private List<Customer> customers;
 
     [SerializeField] private UISlot uiSlotPrefab;
 }

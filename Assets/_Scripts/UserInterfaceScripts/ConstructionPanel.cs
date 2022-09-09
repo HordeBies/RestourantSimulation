@@ -66,7 +66,6 @@ public class ConstructionPanel : MonoBehaviour
         {
             CreateSlot().Populate(item, onClick);
         }
-
     }
     public void Refresh()
     {
