@@ -8,6 +8,7 @@ public class CameraTarget : MonoBehaviour {
     public enum Axis {
         XZ,
         XY,
+        XZ_Reversed,
     }
 
     [SerializeField] private Axis axis = Axis.XZ;
@@ -42,13 +43,16 @@ public class CameraTarget : MonoBehaviour {
             case Axis.XY:
                 moveDir = new Vector3(moveX, moveY).normalized;
                 break;
+            case Axis.XZ_Reversed:
+                moveDir = new Vector3(-moveX, 0, -moveY).normalized;
+                break;
         }
         
         if (moveX != 0 || moveY != 0) {
             // Not idle
         }
 
-        if (axis == Axis.XZ) {
+        if (axis == Axis.XZ || axis == Axis.XZ_Reversed) {
             moveDir = UtilsClass.ApplyRotationToVectorXZ(moveDir, 30f);
         }
 

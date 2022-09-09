@@ -127,6 +127,12 @@ public class ConstructionManager : MonoBehaviour
     public void OnRightClick(InputAction.CallbackContext ctx)
     {
         if (!ctx.started) return;
+
+        if(selectedGridObject != null)
+        {
+            ResetSelectedGridObjectSO();
+            return;
+        }
         var gridObject = CafeGrid.GetGridObject(Mouse3D.GetMouseWorldPosition());
         var placedObject = gridObject?.GetPlacedObject();
         if (placedObject != null)
