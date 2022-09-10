@@ -15,7 +15,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static bool PointerOverUI { private set; get; }
 
+    public Database MainDatabase;
     public GameState gameState = GameState.Default;
+
     private PlayerInput playerInput;
 
     private void Awake()

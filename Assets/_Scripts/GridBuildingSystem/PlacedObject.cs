@@ -28,7 +28,21 @@ public class PlacedObject : MonoBehaviour {
     public List<Vector2Int> GetGridPositionList() {
         return placedObjectTypeSO.GetGridPositionList(origin, dir);
     }
-
+    public Vector2Int GetAdjacentTilePos(GridObject.Dir at)
+    {
+        switch (at)
+        {
+            default:
+            case GridObject.Dir.Down: return new(origin.x, origin.y - 1);
+            case GridObject.Dir.Left: return new(origin.x - 1, origin.y);
+            case GridObject.Dir.Up: return new(origin.x, origin.y + 1);
+            case GridObject.Dir.Right: return new(origin.x + 1, origin.y);
+        }
+    }
+    public Vector2Int GetFrontTilePos()
+    {
+        return GetAdjacentTilePos(dir);
+    }
     public void DestroySelf() {
         Destroy(gameObject);
     }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1151263135451177714}
   - component: {fileID: 3662565017657220909}
   - component: {fileID: 6911031329429530945}
+  - component: {fileID: 2378093807314588941}
   m_Layer: 0
   m_Name: DiningTable_Default
   m_TagString: Untagged
@@ -47,6 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29007807c35615c418883b54b6a23802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placedObjectTypeSO: {fileID: 0}
+  origin: {x: 0, y: 0}
+  dir: 0
 --- !u!114 &6911031329429530945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +87,18 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2378093807314588941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151263135451177715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5936df625e0a18341a5469f7cdc12a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2003273065859080989
 GameObject:
   m_ObjectHideFlags: 0

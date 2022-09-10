@@ -49,6 +49,24 @@ public class ConstructionManager : MonoBehaviour
         OnSelectedChanged?.Invoke(selectedGridObject);
     }
 
+    public PlacedObject GetPlacedObject(Vector2Int coord)
+    {
+        return CafeGrid.GetGridTile(coord.x, coord.y).GetPlacedObject();
+    }
+    public Vector3 GetBorder(PlacedObject obj, GridObject.Dir dir)
+    {
+        var pos = CafeGrid.GetWorldPosition(obj.origin.x,obj.origin.y);
+        //TODO: take into consideration of bigger than 1x1 objects
+        switch (dir)
+        {
+            default:
+            case GridObject.Dir.Down: return new(pos.x + CafeGrid.GetCellSize() / 2, pos.y, pos.z);
+            case GridObject.Dir.Left: return new(pos.x, pos.y, pos.z + CafeGrid.GetCellSize() / 2);
+            case GridObject.Dir.Up: return new(pos.x + CafeGrid.GetCellSize() / 2, pos.y, pos.z + CafeGrid.GetCellSize());
+            case GridObject.Dir.Right: return new(pos.x + CafeGrid.GetCellSize(), pos.y, pos.z + CafeGrid.GetCellSize() / 2);
+        }
+    }
+
     #region HelperMethods
     public Vector3 GetMouseWorldSnappedPosition()
     {
@@ -94,13 +112,13 @@ public class ConstructionManager : MonoBehaviour
     public void Build(int x, int z)
     {
         var gridPositionList = selectedGridObject.GetGridPositionList(new Vector2Int(x, z), dir);
-        var gridObject = CafeGrid.GetGridObject(x, z);
-        if (gridPositionList.All(position => CafeGrid.GetGridObject(position.x, position.y)?.CanBuild(selectedGridObject) ?? false))
+        var gridObject = CafeGrid.GetGridTile(x, z);
+        if (gridPositionList.All(position => CafeGrid.GetGridTile(position.x, position.y)?.CanBuild(selectedGridObject) ?? false))
         {
             var rotationOffset = selectedGridObject.GetRotationOffset(dir);
             var placedObjectWorldPosition = CafeGrid.GetWorldPosition(x, z) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * CafeGrid.GetCellSize();
             var placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), dir, selectedGridObject);
-            gridPositionList.ForEach(position => CafeGrid.GetGridObject(position.x, position.y).SetPlacedObject(placedObject));
+            gridPositionList.ForEach(position => CafeGrid.GetGridTile(position.x, position.y).SetPlacedObject(placedObject));
 
             OnObjectPlaced?.Invoke(placedObject);
         }
@@ -118,13 +136,13 @@ public class ConstructionManager : MonoBehaviour
         CafeGrid.GetXZ(Mouse3D.GetMouseWorldPosition(), out int x, out int z);
 
         var gridPositionList = selectedGridObject.GetGridPositionList(new Vector2Int(x, z), dir);
-        var gridObject = CafeGrid.GetGridObject(x, z);
-        if (gridPositionList.All(position => CafeGrid.GetGridObject(position.x, position.y)?.CanBuild(selectedGridObject) ?? false))
+        var gridObject = CafeGrid.GetGridTile(x, z);
+        if (gridPositionList.All(position => CafeGrid.GetGridTile(position.x, position.y)?.CanBuild(selectedGridObject) ?? false))
         {
             var rotationOffset = selectedGridObject.GetRotationOffset(dir);
             var placedObjectWorldPosition = CafeGrid.GetWorldPosition(x, z) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * CafeGrid.GetCellSize();
             var placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), dir, selectedGridObject);
-            gridPositionList.ForEach(position => CafeGrid.GetGridObject(position.x, position.y).SetPlacedObject(placedObject));
+            gridPositionList.ForEach(position => CafeGrid.GetGridTile(position.x, position.y).SetPlacedObject(placedObject));
 
             OnObjectPlaced?.Invoke(placedObject);
         }
@@ -141,12 +159,12 @@ public class ConstructionManager : MonoBehaviour
             ResetSelectedGridObjectSO();
             return;
         }
-        var gridObject = CafeGrid.GetGridObject(Mouse3D.GetMouseWorldPosition());
+        var gridObject = CafeGrid.GetGridTile(Mouse3D.GetMouseWorldPosition());
         var placedObject = gridObject?.GetPlacedObject();
         if (placedObject != null)
         {
             var gridPositionList = placedObject.GetGridPositionList();
-            gridPositionList.ForEach(position => CafeGrid.GetGridObject(position.x, position.y).ClearPlacedObject());
+            gridPositionList.ForEach(position => CafeGrid.GetGridTile(position.x, position.y).ClearPlacedObject());
             OnObjectRemoved?.Invoke(placedObject);
             placedObject.DestroySelf();
         }
@@ -186,6 +204,11 @@ public class CafeGridTile
             case ObjectType.Wallpaper:
                 if ((x == 0) != (z == 0)) res = true; //simple XOR to prevent (0,0)
                 break;
+            case ObjectType.Chef:
+            case ObjectType.Server:
+            case ObjectType.Customer:
+                res = true;
+                break;
             default:
                 res = x > 0 && z > 0 && placedObject == null;
                 break;
@@ -218,17 +241,22 @@ public class CafeGridTile
                 placedObject?.DestroySelf();
                 placedObject = newPlacedObject;
                 break;
+            case ObjectType.Chef:
+            case ObjectType.Server:
+            case ObjectType.Customer:
+                //doesnt place on a tile just in the world
+                break;
             default:
                 placedObject = newPlacedObject;
                 break;
         }
 
-        grid.TriggerGridObjectChanged(x, z);
+        grid.TriggerGridTileChanged(x, z);
     }
 
     public PlacedObject GetPlacedObject()
     {
-        return placedObject ?? floorTile;
+        return placedObject;
     }
     public PlacedObject GetPlacedFloorTile()
     {
@@ -238,12 +266,12 @@ public class CafeGridTile
     {
         if (placedObject != null) placedObject = null;
         else if (floorTile != null) floorTile = null;
-        grid.TriggerGridObjectChanged(x, z);
+        grid.TriggerGridTileChanged(x, z);
     }
     public void ClearFloorTile()
     {
         floorTile = null;
-        grid.TriggerGridObjectChanged(x, z);
+        grid.TriggerGridTileChanged(x, z);
     }
 
     public override string ToString()

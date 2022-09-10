@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 7563335285279829324}
   - component: {fileID: 6185779420870135955}
   - component: {fileID: 4099591255794116351}
+  - component: {fileID: 6126703308612652217}
   m_Layer: 0
   m_Name: Chair_Default
   m_TagString: Untagged
@@ -241,6 +242,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29007807c35615c418883b54b6a23802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placedObjectTypeSO: {fileID: 0}
+  origin: {x: 0, y: 0}
+  dir: 0
 --- !u!114 &4099591255794116351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,6 +281,20 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6126703308612652217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7563335285279829325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28e404f411ad14469acdebd92cf8d2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  MovementSpeed: 10
 --- !u!1 &7804096230287818258
 GameObject:
   m_ObjectHideFlags: 0

@@ -402,8 +402,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 245302878}
-  m_Layer: 0
-  m_Name: Background
+  m_Layer: 10
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -421,11 +421,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1155196268}
   - {fileID: 795759483}
   - {fileID: 1155300816}
   - {fileID: 657330634}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &318105811
 GameObject:
@@ -440,7 +441,7 @@ GameObject:
   - component: {fileID: 318105814}
   - component: {fileID: 318105813}
   - component: {fileID: 318105816}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: GroundLock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -554,7 +555,7 @@ GameObject:
   - component: {fileID: 394541718}
   - component: {fileID: 394541717}
   - component: {fileID: 394541716}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: GroundLock (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -962,7 +963,7 @@ GameObject:
   - component: {fileID: 516913327}
   - component: {fileID: 516913326}
   - component: {fileID: 516913325}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: GroundLock (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1496,7 +1497,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 245302878}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &773525417
 GameObject:
@@ -1664,7 +1665,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 245302878}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &806761472
 GameObject:
@@ -1816,6 +1817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f97ebf13d0737c4982db15625a9af70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainDatabase: {fileID: 11400000, guid: 19714143a0391a543b977a60b7ffb85f, type: 2}
   gameState: 0
 --- !u!114 &1026077697
 MonoBehaviour:
@@ -1968,7 +1970,7 @@ Transform:
   - {fileID: 1803096607}
   - {fileID: 475063745}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1065981916
 GameObject:
@@ -2360,8 +2362,8 @@ Transform:
   m_LocalScale: {x: 1000, y: 0.1, z: 1000}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 245302878}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1155300812
 GameObject:
@@ -2458,7 +2460,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 245302878}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1162611579
 GameObject:
@@ -2632,7 +2634,7 @@ Transform:
   - {fileID: 773525419}
   - {fileID: 2138980713}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1336746467
 GameObject:
@@ -3044,7 +3046,7 @@ GameObject:
   - component: {fileID: 1868664069}
   - component: {fileID: 1868664068}
   - component: {fileID: 1868664071}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: GroundLock (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3158,7 +3160,7 @@ GameObject:
   - component: {fileID: 1928011336}
   - component: {fileID: 1928011335}
   - component: {fileID: 1928011334}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: GroundLock (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3377,7 +3379,7 @@ GameObject:
   - component: {fileID: 1985221303}
   - component: {fileID: 1985221302}
   - component: {fileID: 1985221301}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: GroundLock (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3491,7 +3493,7 @@ GameObject:
   - component: {fileID: 1994869584}
   - component: {fileID: 1994869583}
   - component: {fileID: 1994869582}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: GroundLock (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3629,7 +3631,7 @@ Transform:
   - {fileID: 1994869581}
   - {fileID: 516913324}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2051895203
 GameObject:
@@ -3846,7 +3848,7 @@ GameObject:
   - component: {fileID: 2081788414}
   - component: {fileID: 2081788413}
   - component: {fileID: 2081788416}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: GroundLock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

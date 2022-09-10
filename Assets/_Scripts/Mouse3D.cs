@@ -21,7 +21,8 @@ public class Mouse3D : MonoBehaviour {
     }
 
     public static Vector3 GetMouseWorldPosition() => Instance.GetMouseWorldPosition_Instance();
-
+    public static GameObject GetClickedGameObject() => Instance.GetClickedGameObject_Instance();
+    
     private Vector3 GetMouseWorldPosition_Instance() {
         Ray ray = Camera.main.ScreenPointToRay(Pointer.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, mouseColliderLayerMask)) {
@@ -30,5 +31,16 @@ public class Mouse3D : MonoBehaviour {
             return Vector3.zero;
         }
     }
-
+    private GameObject GetClickedGameObject_Instance()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Pointer.current.position.ReadValue());
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, mouseColliderLayerMask))
+        {
+            return raycastHit.transform.gameObject;
+        }
+        else
+        {
+            return null;
+        }
+    }
 }

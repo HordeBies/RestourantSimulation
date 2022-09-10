@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1446641072577973272}
   - component: {fileID: 1446641072577973273}
   - component: {fileID: 1446641072577973278}
+  - component: {fileID: -9140323812964138398}
   m_Layer: 0
   m_Name: Customer_Default
   m_TagString: Untagged
@@ -86,6 +87,21 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-9140323812964138398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446641072577973279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6a44b5846bb1d419723981a892bce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placedObject: {fileID: 0}
+  agent: {fileID: 82632547379376227}
+  MovementSpeed: 10
 --- !u!1 &1446641072753481404
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +338,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1446641073802382382}
-  m_Layer: 0
+  - component: {fileID: 82632547379376227}
+  - component: {fileID: 5269714782262483563}
+  m_Layer: 10
   m_Name: ModelBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,6 +363,42 @@ Transform:
   m_Father: {fileID: 1446641072577973272}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!195 &82632547379376227
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446641073802382383}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.25
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.8
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!136 &5269714782262483563
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446641073802382383}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &6846456876822372945
 GameObject:
   m_ObjectHideFlags: 0
@@ -2561,7 +2615,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6849748410736852357}
   - component: {fileID: 6797140144206158433}
-  - component: {fileID: 188914343750900633}
   m_Layer: 0
   m_Name: SM_Chr_Hunter_Male_01
   m_TagString: Untagged
@@ -2619,28 +2672,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!195 &188914343750900633
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6847145702244788741}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.25
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1.8
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1 &6847156972555170001
 GameObject:
   m_ObjectHideFlags: 0

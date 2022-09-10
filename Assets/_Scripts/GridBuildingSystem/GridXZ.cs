@@ -7,8 +7,8 @@ using CodeMonkey.Utils;
 public class GridXZ<TGridObject>
 {
 
-    public event EventHandler<OnGridObjectChangedEventArgs> OnGridObjectChanged;
-    public class OnGridObjectChangedEventArgs : EventArgs
+    public event EventHandler<OnGridTileChangedEventArgs> OnGridTileChanged;
+    public class OnGridTileChangedEventArgs : EventArgs
     {
         public int x;
         public int z;
@@ -54,7 +54,7 @@ public class GridXZ<TGridObject>
             Debug.DrawLine(GetWorldPosition(0, length), GetWorldPosition(width, length), Color.white, 1000f);
             Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, length), Color.white, 1000f);
 
-            OnGridObjectChanged += (object sender, OnGridObjectChangedEventArgs eventArgs) => {
+            OnGridTileChanged += (object sender, OnGridTileChangedEventArgs eventArgs) => {
                 debugTextArray[eventArgs.x, eventArgs.z].text = gridArray[eventArgs.x, eventArgs.z]?.ToString();
             };
         }
@@ -86,27 +86,27 @@ public class GridXZ<TGridObject>
         z = Mathf.FloorToInt((worldPosition - originPosition).z / cellSize);
     }
 
-    public void SetGridObject(int x, int z, TGridObject value)
+    public void SetGridTile(int x, int z, TGridObject value)
     {
         if (x >= 0 && z >= 0 && x < width && z < length)
         {
             gridArray[x, z] = value;
-            TriggerGridObjectChanged(x, z);
+            TriggerGridTileChanged(x, z);
         }
     }
 
-    public void TriggerGridObjectChanged(int x, int z)
+    public void TriggerGridTileChanged(int x, int z)
     {
-        OnGridObjectChanged?.Invoke(this, new OnGridObjectChangedEventArgs { x = x, z = z });
+        OnGridTileChanged?.Invoke(this, new OnGridTileChangedEventArgs { x = x, z = z });
     }
 
-    public void SetGridObject(Vector3 worldPosition, TGridObject value)
+    public void SetGridTile(Vector3 worldPosition, TGridObject value)
     {
         GetXZ(worldPosition, out int x, out int z);
-        SetGridObject(x, z, value);
+        SetGridTile(x, z, value);
     }
 
-    public TGridObject GetGridObject(int x, int z)
+    public TGridObject GetGridTile(int x, int z)
     {
         if (x >= 0 && z >= 0 && x < width && z < length)
         {
@@ -118,11 +118,11 @@ public class GridXZ<TGridObject>
         }
     }
 
-    public TGridObject GetGridObject(Vector3 worldPosition)
+    public TGridObject GetGridTile(Vector3 worldPosition)
     {
         int x, z;
         GetXZ(worldPosition, out x, out z);
-        return GetGridObject(x, z);
+        return GetGridTile(x, z);
     }
 
     public Vector2Int ValidateGridPosition(Vector2Int gridPosition)

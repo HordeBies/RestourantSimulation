@@ -17,7 +17,7 @@ public enum ObjectType
     Chef,
     Server,
 }
-[CreateAssetMenu(fileName ="GridObject_",menuName ="Bies/GridObject")]
+[CreateAssetMenu(fileName = "GridObject_", menuName = "Bies/GridObject")]
 public class GridObject : ScriptableObject
 {
     public enum Dir
@@ -27,6 +27,7 @@ public class GridObject : ScriptableObject
         Up,
         Right,
     }
+    public static Dir[] Directions = new Dir[4] { Dir.Down, Dir.Left, Dir.Up, Dir.Right };
     public static Dir GetNextDir(Dir dir)
     {
         switch (dir)
@@ -57,7 +58,10 @@ public class GridObject : ScriptableObject
     public int width;
     public int length;
 
-
+    public override string ToString()
+    {
+        return $"Type = {Type}\nName = {nameString}";
+    }
     public int GetRotationAngle(Dir dir)
     {
         switch (dir)
