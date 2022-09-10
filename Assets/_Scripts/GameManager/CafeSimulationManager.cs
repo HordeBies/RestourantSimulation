@@ -102,7 +102,7 @@ public class CafeSimulationManager : MonoBehaviour
     {
         chair = obj.GetComponent<ChairBehaviour>();
         var frontObj = ConstructionManager.instance.GetPlacedObject(obj.GetFrontTilePos());
-        if (frontObj.Type == ObjectType.DiningTable)
+        if (frontObj != null && frontObj.Type == ObjectType.DiningTable)
             chair.SetDiningTable(frontObj.GetComponent<DiningTableBehaviour>());
     }
 
@@ -111,10 +111,10 @@ public class CafeSimulationManager : MonoBehaviour
         if (!ctx.started || GameManager.PointerOverUI) return;
 
         var go = Mouse3D.GetClickedGameObject();
-        if(go != null && go.TryGetComponent<BaseBehaviour>(out var baseBehaviour))
+        if(go != null && go.TryGetComponent<RaycastTarget>(out var raycastTarget))
         {
-            baseBehaviour.OnClick();
-            var gridObject = baseBehaviour.GetData();
+            raycastTarget.OnClick();
+            var gridObject = raycastTarget.GetData();
             Debug.Log(gridObject.ToString());
         }
     }

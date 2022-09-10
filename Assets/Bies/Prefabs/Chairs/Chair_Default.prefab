@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1573132664224205491}
   - component: {fileID: 2727272970863871424}
   - component: {fileID: 2951496093435775751}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 6884943021493620825}
   - component: {fileID: 6884943021493620826}
   - component: {fileID: 6884943021493620827}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 6185779420870135955}
   - component: {fileID: 4099591255794116351}
   - component: {fileID: 6126703308612652217}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Chair_Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,8 +293,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28e404f411ad14469acdebd92cf8d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placedObject: {fileID: 0}
   agent: {fileID: 0}
   MovementSpeed: 10
+  customerAssigned: {fileID: 0}
+  diningTable: {fileID: 0}
 --- !u!1 &7804096230287818258
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +311,8 @@ GameObject:
   - component: {fileID: 7789646635865712610}
   - component: {fileID: 7831682180403975068}
   - component: {fileID: 8847735209464014249}
-  m_Layer: 0
+  - component: {fileID: 913966263137332787}
+  m_Layer: 10
   m_Name: SM_Prop_Cafe_Chair_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,6 +414,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0.49, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &913966263137332787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7804096230287818258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd7fc0503a60e0a4fa27f0ac3a871dbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviour: {fileID: 6126703308612652217}
 --- !u!1 &8989546437272054947
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,7 +436,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5357575693038162940}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BuildingVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

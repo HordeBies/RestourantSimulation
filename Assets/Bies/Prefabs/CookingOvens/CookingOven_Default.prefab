@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 305508853625747286}
   - component: {fileID: 305508853625747285}
   - component: {fileID: 305508853625747284}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1290482680872924403}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BuildingVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 3694927253147208259}
   - component: {fileID: 1038383180141639580}
   - component: {fileID: 7157896678871138800}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CookingOven_Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,6 +177,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29007807c35615c418883b54b6a23802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placedObjectTypeSO: {fileID: 0}
+  origin: {x: 0, y: 0}
+  dir: 0
 --- !u!114 &7157896678871138800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,7 +229,7 @@ GameObject:
   - component: {fileID: 6654209608817429454}
   - component: {fileID: 6696619570838243496}
   - component: {fileID: 5182353921525630525}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Prop_Kitchen_Stove_Oven_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +346,7 @@ GameObject:
   - component: {fileID: 6630170472146250846}
   - component: {fileID: 6662083976094856998}
   - component: {fileID: 6656213261740362988}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Prop_Kitchen_Stove_Oven_01_Door_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +429,7 @@ GameObject:
   - component: {fileID: 6637616920033183990}
   - component: {fileID: 6664002099389881014}
   - component: {fileID: 6654089479622172608}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Prop_Kitchen_Stove_Oven_01_Tray_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,7 +512,7 @@ GameObject:
   - component: {fileID: 6637715595281090892}
   - component: {fileID: 6662213496476177150}
   - component: {fileID: 6654266490862924894}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Prop_Kitchen_Stove_Oven_01_Door_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,7 +595,7 @@ GameObject:
   - component: {fileID: 6637459446972741984}
   - component: {fileID: 6663730113156685862}
   - component: {fileID: 6654110775108797502}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Prop_Kitchen_Stove_Oven_01_Tray_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -676,7 +679,7 @@ GameObject:
   - component: {fileID: 5649126156026391996}
   - component: {fileID: 9108637779573236431}
   - component: {fileID: 8305917076586277896}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
