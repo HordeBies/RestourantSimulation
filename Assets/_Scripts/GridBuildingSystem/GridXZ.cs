@@ -37,7 +37,7 @@ public class GridXZ<TGridObject>
             }
         }
 
-        bool showDebug = true;
+        bool showDebug = GameManager.instance.showGridDebug;
         if (showDebug)
         {
             TextMesh[,] debugTextArray = new TextMesh[width, length];

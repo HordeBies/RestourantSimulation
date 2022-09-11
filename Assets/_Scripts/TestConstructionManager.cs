@@ -38,6 +38,8 @@ public class TestConstructionManager : MonoBehaviour
             }
         }
 
+        manager.Spawn(1, 2, GridObject.Dir.Down, Database.Chefs[0]);//At Door
+
     }
 
 }

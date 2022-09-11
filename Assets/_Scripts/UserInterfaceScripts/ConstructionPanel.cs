@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class ConstructionPanel : MonoBehaviour
 {
+    [SerializeField] private UISlot ConstructionUISlotPF;
+    [Space]
     [SerializeField] private Transform Content;
     [SerializeField] private int SlotCount;
 
@@ -25,12 +27,12 @@ public class ConstructionPanel : MonoBehaviour
     }
     private UISlot CreateSlot()
     {
-        GameObject createdUISlot = Instantiate(Database.UISlotPrefab.gameObject, Content);
+        GameObject createdUISlot = Instantiate(ConstructionUISlotPF.gameObject, Content);
         return createdUISlot.GetComponent<UISlot>();
     }
     private void Initialize()
     {
-        CreateSlot().Populate(null, (slot) => ConstructionManager.instance.ResetSelectedGridObjectSO());
+        CreateSlot().Populate(null as GridObject, (slot) => ConstructionManager.instance.ResetSelectedGridObjectSO());
 
         foreach (var item in Database.FloorTiles)
         {

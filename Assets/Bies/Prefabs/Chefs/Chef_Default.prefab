@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 1932636370359880211}
   - component: {fileID: 2881189168730863564}
   - component: {fileID: 5386563893481095584}
+  - component: {fileID: 5059064894162725805}
   m_Layer: 0
   m_Name: Chef_Default
   m_TagString: Untagged
@@ -119,6 +120,21 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5059064894162725805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932636370359880210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea1f87dabffdb146909071eb59ddc30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placedObject: {fileID: 2881189168730863564}
+  agent: {fileID: 3674900152993190040}
+  MovementSpeed: 10
 --- !u!1 &3290016862022907651
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,6 +602,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7846251668421536451}
+  - component: {fileID: 3674900152993190040}
+  - component: {fileID: 288635071422327112}
+  - component: {fileID: 1273867204762289250}
   m_Layer: 0
   m_Name: ModelBase
   m_TagString: Untagged
@@ -609,6 +628,55 @@ Transform:
   m_Father: {fileID: 1932636370359880211}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!195 &3674900152993190040
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7846251668421536450}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.25
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.8
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!136 &288635071422327112
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7846251668421536450}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &1273867204762289250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7846251668421536450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd7fc0503a60e0a4fa27f0ac3a871dbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviour: {fileID: 5059064894162725805}
 --- !u!1 &7846508254848936684
 GameObject:
   m_ObjectHideFlags: 0
@@ -3511,7 +3579,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7848701229585044184}
   - component: {fileID: 7903927462591346168}
-  - component: {fileID: 809474570384560781}
   m_Layer: 0
   m_Name: SM_Chr_Attendant_Female_01
   m_TagString: Untagged
@@ -3569,28 +3636,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!195 &809474570384560781
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7847442087969149748}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.25
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1.8
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1 &7847457518674925530
 GameObject:
   m_ObjectHideFlags: 0

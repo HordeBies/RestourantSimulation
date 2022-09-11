@@ -12,12 +12,13 @@ public class Database : ScriptableObject
     public static List<GridObject> Doors => instance.doors;
     public static List<GridObject> CookingOvens => instance.cookingOvens;
     public static List<GridObject> ServingTables => instance.servingTables;
+
     public static List<GridObject> Chefs => instance.chefs;
     public static List<GridObject> Servers => instance.servers;
     public static List<GridObject> Customers => instance.customers;
-
-
-    public static UISlot UISlotPrefab => instance.uiSlotPrefab;
+    
+    public static List<Meal> Meals => instance.meals;
+    
     public Database()
     {
         instance = this;
@@ -35,5 +36,5 @@ public class Database : ScriptableObject
     [SerializeField] private List<GridObject> servers;
     [SerializeField] private List<GridObject> customers;
 
-    [SerializeField] private UISlot uiSlotPrefab;
+    [SerializeField] private List<Meal> meals;
 }

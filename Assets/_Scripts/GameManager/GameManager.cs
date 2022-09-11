@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     public Database MainDatabase;
     public GameState gameState = GameState.Default;
+    public bool showGridDebug;
 
     private PlayerInput playerInput;
 

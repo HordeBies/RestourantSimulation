@@ -4,18 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class CustomerBehaviour : BaseBehaviour
+public class CustomerBehaviour : NPCBehaviour
 {
-    
     private void Start()
     {
-        agent.speed = MovementSpeed;
         StartCoroutine(Enter());
-    }
-    public bool Move(Vector3 to)
-    {
-        Debug.Log("Trying to Reach: " + to);
-        return agent.SetDestination(to);
     }
     private IEnumerator Enter()
     {
@@ -31,18 +24,31 @@ public class CustomerBehaviour : BaseBehaviour
             if(timeOut <= 0)
             {
                 Debug.Log("Couldn't find an empty seat");
+                yield return Exit();
                 yield break;
             }
         }
 
         yield return new WaitUntil(() => HasReachedDestination()); //TODO: Add timeout, use waitwhile time elapsed < timeout time && !hasreacheddestination
-
+        agent.isStopped = true;
         Debug.Log("Sitting to the table!");
 
         yield return PlaceOrder();
     }
     private IEnumerator PlaceOrder()
     {
+        float timeOut = 10f;
+        while (!cafe.RequestMeal(this))
+        {
+            yield return new WaitForSeconds(1f);
+            timeOut -= 1f;
+            if (timeOut <= 0)
+            {
+                Debug.Log("Couldn't request a meal");
+                yield return Exit();
+                yield break;
+            }
+        }
         yield return Dine();
     }
     private IEnumerator Dine()
@@ -56,6 +62,7 @@ public class CustomerBehaviour : BaseBehaviour
     private IEnumerator Exit()
     {
         yield return null;
+        //Destroy(gameObject, 2f);
     }
 
     public override void OnClick()

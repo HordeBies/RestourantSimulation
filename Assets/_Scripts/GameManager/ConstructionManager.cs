@@ -51,7 +51,7 @@ public class ConstructionManager : MonoBehaviour
 
     public PlacedObject GetPlacedObject(Vector2Int coord)
     {
-        return CafeGrid.GetGridTile(coord.x, coord.y).GetPlacedObject();
+        return CafeGrid.GetGridTile(coord.x, coord.y)?.GetPlacedObject();
     }
     public Vector3 GetBorder(PlacedObject obj, GridObject.Dir dir)
     {
@@ -135,19 +135,20 @@ public class ConstructionManager : MonoBehaviour
         Debug.Log("Left Click from Construction mode outside UI");
         CafeGrid.GetXZ(Mouse3D.GetMouseWorldPosition(), out int x, out int z);
 
-        var gridPositionList = selectedGridObject.GetGridPositionList(new Vector2Int(x, z), dir);
-        var gridObject = CafeGrid.GetGridTile(x, z);
-        if (gridPositionList.All(position => CafeGrid.GetGridTile(position.x, position.y)?.CanBuild(selectedGridObject) ?? false))
-        {
-            var rotationOffset = selectedGridObject.GetRotationOffset(dir);
-            var placedObjectWorldPosition = CafeGrid.GetWorldPosition(x, z) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * CafeGrid.GetCellSize();
-            var placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), dir, selectedGridObject);
-            gridPositionList.ForEach(position => CafeGrid.GetGridTile(position.x, position.y).SetPlacedObject(placedObject));
+        Build(x, z);
+        //var gridPositionList = selectedGridObject.GetGridPositionList(new Vector2Int(x, z), dir);
+        //var gridObject = CafeGrid.GetGridTile(x, z);
+        //if (gridPositionList.All(position => CafeGrid.GetGridTile(position.x, position.y)?.CanBuild(selectedGridObject) ?? false))
+        //{
+        //    var rotationOffset = selectedGridObject.GetRotationOffset(dir);
+        //    var placedObjectWorldPosition = CafeGrid.GetWorldPosition(x, z) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * CafeGrid.GetCellSize();
+        //    var placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), dir, selectedGridObject);
+        //    gridPositionList.ForEach(position => CafeGrid.GetGridTile(position.x, position.y).SetPlacedObject(placedObject));
 
-            OnObjectPlaced?.Invoke(placedObject);
-        }
-        else
-            UtilsClass.CreateWorldTextPopup("Cannot build here!", Mouse3D.GetMouseWorldPosition());
+        //    OnObjectPlaced?.Invoke(placedObject);
+        //}
+        //else
+        //    UtilsClass.CreateWorldTextPopup("Cannot build here!", Mouse3D.GetMouseWorldPosition());
     }
 
     public void OnRightClick(InputAction.CallbackContext ctx)
@@ -188,6 +189,7 @@ public class CafeGridTile
     private PlacedObject placedObject;
     private PlacedObject floorTile;
     private static PlacedObject doorTile;
+    private static PlacedObject registerTile;
     public static PlacedObject DoorTile => doorTile;
 
     public bool CanBuild(GridObject gridObject)
@@ -244,7 +246,7 @@ public class CafeGridTile
             case ObjectType.Chef:
             case ObjectType.Server:
             case ObjectType.Customer:
-                //doesnt place on a tile just in the world
+                //doesnt place on a tile just let it be in the world
                 break;
             default:
                 placedObject = newPlacedObject;
