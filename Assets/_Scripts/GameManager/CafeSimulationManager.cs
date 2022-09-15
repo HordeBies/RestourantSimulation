@@ -13,8 +13,10 @@ public class CafeSimulationManager : MonoBehaviour
     public static Func<PlacedObject> GetDoorTile;
     public SimulationPanel ui => SimulationPanel.instance;
 
+    public Queue<ServerJob> ServerJobs = new();
+
     private List<DiningTableBehaviour> DiningTables = new();
-    private List<PlacedObject> ServingTables = new();
+    private List<ServingTableBehaviour> ServingTables = new();
     private List<ChairBehaviour> Chairs = new();
     private List<CookingOvenBehaviour> CookingOvens = new();
 
@@ -45,20 +47,48 @@ public class CafeSimulationManager : MonoBehaviour
         }
         oven.Cook(meal);
     }
-    public bool AssignSeat(CustomerBehaviour customer)
+    public bool AssignSeat(CustomerBehaviour customer, out ChairBehaviour chair)
     {
-        var chair = Chairs.FirstOrDefault(chair => chair.IsAvailable());
+        chair = Chairs.FirstOrDefault(chair => chair.IsAvailable());
         if (chair == null) return false;
         
         if (!CanReach(chair.placedObject,out GridObject.Dir emptySide)) return false;
 
         chair.Assign(customer);
-        customer.Move(ConstructionManager.instance.GetBorder(chair.placedObject, emptySide));
         return true;
     }
-    public bool RequestMeal(CustomerBehaviour customer)
+    public void RequestMeal(CustomerBehaviour customer)
     {
-        return false;
+        ServerJobs.Enqueue(new ServeCustomerJob(customer));
+    }
+    public ServerJob GetServerJob()
+    {
+        if (ServerJobs.TryDequeue(out var job))
+            return job;
+        else
+            return null;
+    }
+    public bool GetServingTableForCustomerMeal(out ServingTableBehaviour servingTable)
+    {
+        servingTable = null;
+        foreach (var table in ServingTables)
+        {
+            if (!CanReach(table.placedObject, out _)) continue;
+            if (table.meal != null) servingTable = table;
+        }
+        return servingTable != null;
+    }
+    public bool GetServingTableForNewMeal(Meal meal,out ServingTableBehaviour servingTable)
+    {
+        ServingTableBehaviour emptyTable = null, sameMealTable = null;
+        foreach (var table in ServingTables)
+        {
+            if (!CanReach(table.placedObject, out _)) continue;
+            if (table.meal == meal) sameMealTable = table;
+            if (table.Empty() && emptyTable == null) emptyTable = table;
+        }
+        servingTable = sameMealTable ?? emptyTable;
+        return servingTable != null;
     }
     public bool CanReach(PlacedObject to, out GridObject.Dir side)
     {
@@ -85,6 +115,19 @@ public class CafeSimulationManager : MonoBehaviour
             npc.Move(ConstructionManager.instance.GetBorder(to, side));
         }
         return result;
+    }
+    public bool TryMove(NPCBehaviour npc, PlacedObject to)
+    {
+        bool moved = false;
+        foreach (var dir in GridObject.Directions)
+        {
+            if (TryMove(npc,to,dir))
+            {
+                moved = true;
+                break;
+            }
+        }
+        return moved;
     }
     
     //Caching simulation rules here
@@ -115,7 +158,8 @@ public class CafeSimulationManager : MonoBehaviour
             case ObjectType.FloorTile:
                 break;
             case ObjectType.ServingTable:
-                ServingTables.Add(obj);
+                var servingTable = obj.GetComponent<ServingTableBehaviour>();
+                ServingTables.Add(servingTable);
                 break;
             case ObjectType.Wallpaper:
                 break;
@@ -142,6 +186,34 @@ public class CafeSimulationManager : MonoBehaviour
     private void UpdateCache(PlacedObject obj)
     {
         if (obj == null) return;
+        switch (obj.Type)
+        {
+            case ObjectType.NaN:
+                break;
+            case ObjectType.Chair:
+                UpdateChair(obj, out _);
+                break;
+            case ObjectType.CookingOven:
+                break;
+            case ObjectType.DiningTable:
+                break;
+            case ObjectType.FloorTile:
+                break;
+            case ObjectType.ServingTable:
+                break;
+            case ObjectType.Wallpaper:
+                break;
+            case ObjectType.Door:
+                break;
+            case ObjectType.Customer:
+                break;
+            case ObjectType.Chef:
+                break;
+            case ObjectType.Server:
+                break;
+            default:
+                break;
+        }
     }
     private void UpdateChair(PlacedObject obj, out ChairBehaviour chair)
     {

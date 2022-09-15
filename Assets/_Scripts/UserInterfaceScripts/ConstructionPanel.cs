@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,20 +11,18 @@ public class ConstructionPanel : MonoBehaviour
     [Space]
     [SerializeField] private Transform Content;
     [SerializeField] private int SlotCount;
+    private UISlot[] uiSlots;
 
     private Action<UISlot> onClick;
 
     private void Awake()
     {
+        ConstructionManager.OnSelectedChanged += Refresh;
         onClick = (slot) =>
         {
-            ConstructionManager.instance.SetSelectedGridObject(slot);
+            ConstructionManager.instance.SetSelectedGridObject(slot.gridObject);
         };
         Initialize();
-    }
-    private void OnEnable()
-    {
-        Refresh();
     }
     private UISlot CreateSlot()
     {
@@ -68,9 +67,16 @@ public class ConstructionPanel : MonoBehaviour
         {
             CreateSlot().Populate(item, onClick);
         }
+        uiSlots = Content.GetComponentsInChildren<UISlot>();
+        Refresh(null);
     }
-    public void Refresh()
+    public void Refresh(GridObject selectedGO)
     {
-
+        var selected = uiSlots.FirstOrDefault(slot => slot.gridObject == selectedGO);
+        if (selected == null) selected = uiSlots[0];
+        foreach (var slot in uiSlots)
+        {
+            slot.Refresh(selected);
+        }
     }
 }

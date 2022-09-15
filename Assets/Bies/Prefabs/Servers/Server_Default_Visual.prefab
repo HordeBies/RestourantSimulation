@@ -3746,9 +3746,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7921875928043811983}
-  - component: {fileID: 8181117691147594070}
-  - component: {fileID: 5977085745741898892}
-  - component: {fileID: 8775688488861614314}
   m_Layer: 10
   m_Name: ModelBase
   m_TagString: Untagged
@@ -3772,55 +3769,6 @@ Transform:
   m_Father: {fileID: 7921875928063873020}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!195 &8181117691147594070
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7921875928043809648}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.25
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1.8
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!136 &5977085745741898892
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7921875928043809648}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 1.8
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &8775688488861614314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7921875928043809648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd7fc0503a60e0a4fa27f0ac3a871dbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  behaviour: {fileID: 2294469953539075915}
 --- !u!1 &7921875928063873023
 GameObject:
   m_ObjectHideFlags: 0
@@ -3832,9 +3780,8 @@ GameObject:
   - component: {fileID: 7921875928063873020}
   - component: {fileID: 7921875928063873021}
   - component: {fileID: 7921875928063873022}
-  - component: {fileID: 2294469953539075915}
   m_Layer: 0
-  m_Name: Server_Default
+  m_Name: Server_Default_Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3908,21 +3855,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2294469953539075915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7921875928063873023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40a14d26749f0f84594528eb254844e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  placedObject: {fileID: 7921875928063873021}
-  agent: {fileID: 8181117691147594070}
-  MovementSpeed: 10
 --- !u!1 &7921875928707818202
 GameObject:
   m_ObjectHideFlags: 0

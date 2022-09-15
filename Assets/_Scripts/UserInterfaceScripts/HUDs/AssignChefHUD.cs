@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AssignChefHUD : HUD
@@ -10,7 +11,7 @@ public class AssignChefHUD : HUD
     public ChefBehaviour selectedChef { private set; get; }
 
     private Action<UISlot> onClick;
-    private void Start()
+    private void Awake()
     {
         onClick = (slot) =>
         {
@@ -35,16 +36,18 @@ public class AssignChefHUD : HUD
 
     public override void Open(BaseBehaviour data)
     {
+        gameObject.SetActive(true);
         selectedChef = (ChefBehaviour)data;
         Refresh();
-        gameObject.SetActive(true);
     }
 
     public override void Refresh()
     {
+        var selectedUISlot = chefSlots.FirstOrDefault(slot => slot.chef == selectedChef);
+        if (selectedUISlot == null) selectedUISlot = chefSlots[0];
         foreach (var chefSlot in chefSlots)
         {
-            chefSlot.Refresh(selectedChef);
+            chefSlot.Refresh(selectedUISlot);
         }
     }
 }

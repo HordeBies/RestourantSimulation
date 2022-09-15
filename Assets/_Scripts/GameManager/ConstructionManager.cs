@@ -32,10 +32,11 @@ public class ConstructionManager : MonoBehaviour
 
         selectedGridObject = null;
     }
-    public void SetSelectedGridObject(UISlot from)
+    public void SetSelectedGridObject(GridObject to)
     {
-        selectedGridObject = from?.gridObject;
-        Debug.Log("Clicked to " + selectedGridObject.nameString);
+        if (!to.canBeSelected) return;
+        selectedGridObject = to;
+        Debug.Log("Clicked to " + selectedGridObject?.nameString);
         OnSelectedChanged?.Invoke(selectedGridObject);
     }
     public GridObject GetSelectedGridObjectSO()
@@ -108,11 +109,11 @@ public class ConstructionManager : MonoBehaviour
         dir = newDir;
         selectedGridObject = newSelectedGridObject;
         Build(x, z);
+        selectedGridObject = null;
     }
     public void Build(int x, int z)
     {
         var gridPositionList = selectedGridObject.GetGridPositionList(new Vector2Int(x, z), dir);
-        var gridObject = CafeGrid.GetGridTile(x, z);
         if (gridPositionList.All(position => CafeGrid.GetGridTile(position.x, position.y)?.CanBuild(selectedGridObject) ?? false))
         {
             var rotationOffset = selectedGridObject.GetRotationOffset(dir);
@@ -130,25 +131,26 @@ public class ConstructionManager : MonoBehaviour
     #region ConstructionInputHandling
     public void OnLeftClick(InputAction.CallbackContext ctx) //Place Grid Object
     {
-        if (!ctx.started || GameManager.PointerOverUI || selectedGridObject == null) return;
-
+        if (GameManager.PointerOverUI) return;
+        if (!ctx.started) return;
         Debug.Log("Left Click from Construction mode outside UI");
+
         CafeGrid.GetXZ(Mouse3D.GetMouseWorldPosition(), out int x, out int z);
+        
+        if(selectedGridObject != null)
+        {
+            Build(x, z);
+            return;
+        }
 
-        Build(x, z);
-        //var gridPositionList = selectedGridObject.GetGridPositionList(new Vector2Int(x, z), dir);
-        //var gridObject = CafeGrid.GetGridTile(x, z);
-        //if (gridPositionList.All(position => CafeGrid.GetGridTile(position.x, position.y)?.CanBuild(selectedGridObject) ?? false))
-        //{
-        //    var rotationOffset = selectedGridObject.GetRotationOffset(dir);
-        //    var placedObjectWorldPosition = CafeGrid.GetWorldPosition(x, z) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * CafeGrid.GetCellSize();
-        //    var placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), dir, selectedGridObject);
-        //    gridPositionList.ForEach(position => CafeGrid.GetGridTile(position.x, position.y).SetPlacedObject(placedObject));
+        var go = Mouse3D.GetClickedGameObject();
+        if (go != null && go.TryGetComponent<RaycastTarget>(out var rt))
+        {
+            SetSelectedGridObject(rt.placedObject.placedObjectTypeSO);
+            dir = rt.placedObject.dir;
+            return;
+        }
 
-        //    OnObjectPlaced?.Invoke(placedObject);
-        //}
-        //else
-        //    UtilsClass.CreateWorldTextPopup("Cannot build here!", Mouse3D.GetMouseWorldPosition());
     }
 
     public void OnRightClick(InputAction.CallbackContext ctx)

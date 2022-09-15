@@ -5,22 +5,39 @@ using UnityEngine;
 public class ChefBehaviour : NPCBehaviour
 {
     CookingOvenBehaviour assignedCookingOven;
-    public void AssignToCookingOven(CookingOvenBehaviour cookingOven)
+    public bool CanCook { private set; get; }
+    private bool Lock = false;
+    public IEnumerator AssignToCookingOven(CookingOvenBehaviour cookingOven)
     {
+        yield return new WaitWhile(() => Lock);
         if (assignedCookingOven != null && assignedCookingOven != cookingOven) assignedCookingOven.AssignChef(null);
-        if (assignedCookingOven == cookingOven) return;
+        if (assignedCookingOven == cookingOven) yield break;
         assignedCookingOven = cookingOven;
-        if(!cafe.TryMove(this, assignedCookingOven.placedObject, assignedCookingOven.placedObject.dir))
+        CanCook = false;
+        yield return MoveToOven();
+    }
+    public IEnumerator MoveToOven()
+    {
+        if (!cafe.TryMove(this, assignedCookingOven.placedObject, assignedCookingOven.placedObject.dir))
         {
             Debug.LogWarning("Chef can't reach to the destination");
         }
-        StartCoroutine(CorrectRotation());
-    }
-    public IEnumerator CorrectRotation()
-    {
         yield return new WaitUntil(() => HasReachedDestination());
-        agent.isStopped = true;
+        CanCook = true;
         //Rotate into position
+    }
+    public IEnumerator TakeOutMeal(Meal meal)
+    {
+        Lock = true;
+        ServingTableBehaviour emptyServingTable = default;
+        yield return new WaitUntil(()=> cafe.GetServingTableForNewMeal(meal,out emptyServingTable));
+        assignedCookingOven.ClearOven();
+        CanCook = false;
+        cafe.TryMove(this, emptyServingTable.placedObject);
+        yield return new WaitUntil(()=> HasReachedDestination());
+        emptyServingTable.PutMeal(meal);
+        yield return MoveToOven();
+        Lock = false;
     }
     public override void OnClick()
     {

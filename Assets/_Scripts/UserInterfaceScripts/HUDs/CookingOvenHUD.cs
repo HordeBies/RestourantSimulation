@@ -61,6 +61,7 @@ public class CookingOvenHUD : HUD
     }
     private void FixedUpdate()
     {
+        Refresh();
         if(cookingOven != null && cookingOven.IsCooking()) MealTimer.text = TimeSpan.FromSeconds(cookingOven.RemainingTime).ToString("mm':'ss");//(time.ToString("hh':'mm':'ss")); // 00:03:48
     }
 

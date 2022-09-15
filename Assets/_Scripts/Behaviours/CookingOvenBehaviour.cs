@@ -9,6 +9,7 @@ public class CookingOvenBehaviour : BaseBehaviour
     public float RemainingTime { private set; get; }
     [SerializeField] private GameObject cookingPot;
     [SerializeField] private Transform mealPos;
+    private GameObject mealPrefab;
 
     public bool IsAvailable()
     {
@@ -21,12 +22,16 @@ public class CookingOvenBehaviour : BaseBehaviour
     public void AssignChef(ChefBehaviour chef)
     {
         assignedChef = chef;
-        if(chef != null) chef.AssignToCookingOven(this);
+        if(chef != null) chef.StartCoroutine(chef.AssignToCookingOven(this));
     }
     public void Cook(Meal mealToCook)
     {
         StartCoroutine(StartCooking(mealToCook));
         Debug.Log("Starting to cook " + mealToCook.MealName);
+    }
+    private bool CanCook()
+    {
+        return assignedChef != null && assignedChef.CanCook;
     }
     private IEnumerator StartCooking(Meal mealToCook)
     {
@@ -36,11 +41,21 @@ public class CookingOvenBehaviour : BaseBehaviour
         while(RemainingTime > 0)
         {
             yield return new WaitForSeconds(1f);
-            RemainingTime -= 1f;
+            if (CanCook())
+            {
+                RemainingTime -= 1f;
+            }
         }
         cookingPot.SetActive(false);
-        Instantiate(meal.prefab, mealPos.position, Quaternion.Euler(0, GetData().GetRotationAngle(placedObject.dir), 0),mealPos);
+        mealPrefab = Instantiate(meal.prefab, mealPos.position, Quaternion.Euler(0, GetData().GetRotationAngle(placedObject.dir), 0),mealPos).gameObject;
         Debug.Log("Finished cooking " + mealToCook.MealName);
+        
+        yield return assignedChef.TakeOutMeal(meal);
+    }
+    public void ClearOven()
+    {
+        Destroy(mealPrefab);
+        meal = null;
     }
     public override void OnClick()
     {

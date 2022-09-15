@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class CustomerBehaviour : NPCBehaviour
 {
+    public ChairBehaviour assignedChair;
+    private Meal servedMeal;
     private void Start()
     {
         StartCoroutine(Enter());
@@ -16,8 +18,8 @@ public class CustomerBehaviour : NPCBehaviour
     }
     private IEnumerator Sit()
     {
-        float timeOut = 10f; 
-        while (!cafe.AssignSeat(this))
+        float timeOut = 10f;
+        while (!cafe.AssignSeat(this, out assignedChair))
         {
             yield return new WaitForSeconds(1f);
             timeOut -= 1f;
@@ -29,40 +31,44 @@ public class CustomerBehaviour : NPCBehaviour
             }
         }
 
+        if (!cafe.TryMove(this, assignedChair.placedObject))
+            Debug.LogError("Couldnt find a route to the assigned seat!");
+
         yield return new WaitUntil(() => HasReachedDestination()); //TODO: Add timeout, use waitwhile time elapsed < timeout time && !hasreacheddestination
-        agent.isStopped = true;
         Debug.Log("Sitting to the table!");
 
         yield return PlaceOrder();
     }
     private IEnumerator PlaceOrder()
     {
-        float timeOut = 10f;
-        while (!cafe.RequestMeal(this))
-        {
-            yield return new WaitForSeconds(1f);
-            timeOut -= 1f;
-            if (timeOut <= 0)
-            {
-                Debug.Log("Couldn't request a meal");
-                yield return Exit();
-                yield break;
-            }
-        }
+        cafe.RequestMeal(this);
+        yield return new WaitWhile(() => servedMeal == null);
         yield return Dine();
+    }
+    public void Serve(Meal meal)
+    {
+        servedMeal = meal;
     }
     private IEnumerator Dine()
     {
+        Debug.Log("Dining "+ servedMeal.MealName);
+        yield return new WaitForSeconds(5f);
         yield return Pay();
     }
     private IEnumerator Pay()
     {
+        Debug.Log("Paying ");
         yield return Exit();
     }
     private IEnumerator Exit()
     {
-        yield return null;
-        //Destroy(gameObject, 2f);
+        if(assignedChair != null)
+        {
+            assignedChair.Leave();
+            cafe.TryMove(this, CafeSimulationManager.GetDoorTile());
+        }
+        yield return new WaitUntil(() => HasReachedDestination());
+        Destroy(agent.gameObject, 2f);
     }
 
     public override void OnClick()

@@ -24,6 +24,15 @@ public class PlacedObject : MonoBehaviour {
         this.origin = origin;
         this.dir = dir;
     }
+    public void Move(Vector3 toWorld, Vector2Int toGrid)
+    {
+        transform.position = toWorld;
+        origin = toGrid;
+    }
+    public void Rotate(GridObject.Dir to)
+    {
+        dir = to;
+    }
 
     public List<Vector2Int> GetGridPositionList() {
         return placedObjectTypeSO.GetGridPositionList(origin, dir);

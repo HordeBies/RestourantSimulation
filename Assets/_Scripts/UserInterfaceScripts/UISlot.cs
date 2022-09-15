@@ -58,9 +58,9 @@ public class UISlot : MonoBehaviour
     {
         OnClickAction?.Invoke(this);
     }
-    public void Refresh(ChefBehaviour selectedChef)
+    public void Refresh(UISlot selectedSlot)
     {
-        SelectionHighlight.SetActive(chef == selectedChef);
+        SelectionHighlight.SetActive(this == selectedSlot);
     }
     
 }

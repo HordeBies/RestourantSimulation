@@ -57,6 +57,7 @@ public class GridObject : ScriptableObject
     public Transform visual;
     public int width;
     public int length;
+    public bool canBeSelected = true;
 
     public override string ToString()
     {

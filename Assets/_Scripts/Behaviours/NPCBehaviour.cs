@@ -25,9 +25,10 @@ public abstract class NPCBehaviour : BaseBehaviour
     public bool Move(Vector3 to)
     {
         Debug.Log("Trying to Reach: " + to);
+        agent.isStopped = false;
         return agent.SetDestination(to);
     }
-    protected bool HasReachedDestination()
+    public bool HasReachedDestination()
     {
         if (!agent.pathPending)
         {

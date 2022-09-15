@@ -5,6 +5,7 @@ using UnityEngine;
 public class RaycastTarget : MonoBehaviour
 {
     [SerializeField] private BaseBehaviour behaviour;
+    public PlacedObject placedObject => behaviour.placedObject;
     private void Awake()
     {
         if(behaviour == null)

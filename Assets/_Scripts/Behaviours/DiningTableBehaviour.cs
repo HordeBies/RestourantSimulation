@@ -28,7 +28,8 @@ public class DiningTableBehaviour : BaseBehaviour
     }
     public void FinishDining(GridObject.Dir dir)
     {
-        positions[dir] = State.Trash;
+        //TODO: Create Clear Table Job and make state = trash
+        positions[dir] = State.Empty;
     }
     public void ClearTable(GridObject.Dir dir)
     {
