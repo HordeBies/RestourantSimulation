@@ -40,7 +40,8 @@ public class TestConstructionManager : MonoBehaviour
 
         manager.Spawn(1, 2, GridObject.Dir.Down, Database.Chefs[0]);//Chef at door
         manager.Spawn(1, 2, GridObject.Dir.Down, Database.Servers[0]);//Server at door
-
+        CafeSimulationManager.instance.GetServingTableForNewMeal(Database.Meals[0], out var table);
+        table.PutMeal(Database.Meals[0]);
     }
 
 }

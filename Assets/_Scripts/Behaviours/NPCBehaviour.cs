@@ -6,16 +6,15 @@ using UnityEngine.AI;
 public abstract class NPCBehaviour : BaseBehaviour
 {
     [SerializeField] protected NavMeshAgent agent;
-    [SerializeField] protected float MovementSpeed = 10f;
+    [SerializeField] protected AnimationManager anim;
     protected override void Awake()
     {
         base.Awake();
-        agent.speed = MovementSpeed;
         if (agent != null)
         {
-            agent.transform.SetParent(null);
-            transform.SetParent(agent.transform);
-            agent.gameObject.name = transform.gameObject.name + "_NavMeshAgent";
+            //agent.transform.SetParent(null);
+            //transform.SetParent(agent.transform);
+            //agent.gameObject.name = transform.gameObject.name + "_NavMeshAgent";
         }
         else
         {

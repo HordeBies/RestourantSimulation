@@ -26,12 +26,13 @@ public class ServingTableBehaviour : BaseBehaviour
     }
     public Meal Serve()
     {
+        var servedMeal = meal;
         remainingServings--;
         if(remainingServings == 0)
         {
             ClearTable();
         }
-        return meal;
+        return servedMeal;
     }
     private void ClearTable()
     {

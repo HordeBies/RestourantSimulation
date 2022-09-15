@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class CustomerBehaviour : NPCBehaviour
 {
+    [SerializeField] private Transform model;
     public ChairBehaviour assignedChair;
     private Meal servedMeal;
     private void Start()
@@ -35,9 +36,26 @@ public class CustomerBehaviour : NPCBehaviour
             Debug.LogError("Couldnt find a route to the assigned seat!");
 
         yield return new WaitUntil(() => HasReachedDestination()); //TODO: Add timeout, use waitwhile time elapsed < timeout time && !hasreacheddestination
+        FixSit();
         Debug.Log("Sitting to the table!");
-
         yield return PlaceOrder();
+    }
+    private void FixSit()
+    {
+        //agent.baseOffset += 100f;
+        model.parent = transform;
+        model.position = assignedChair.customerPlace.position;
+        model.rotation = Quaternion.Euler(0, GetData().GetRotationAngle(assignedChair.TableDir), 0);
+        anim.Sit();
+        agent.gameObject.SetActive(false);
+    }
+    private void FixStandUp()
+    {
+        //agent.baseOffset -= 100f;
+        agent.gameObject.SetActive(true);
+        model.parent = agent.transform;
+        model.localPosition = Vector3.zero;
+        model.localRotation = Quaternion.identity;
     }
     private IEnumerator PlaceOrder()
     {
@@ -58,6 +76,7 @@ public class CustomerBehaviour : NPCBehaviour
     private IEnumerator Pay()
     {
         Debug.Log("Paying ");
+        FixStandUp();
         yield return Exit();
     }
     private IEnumerator Exit()
@@ -68,7 +87,7 @@ public class CustomerBehaviour : NPCBehaviour
             cafe.TryMove(this, CafeSimulationManager.GetDoorTile());
         }
         yield return new WaitUntil(() => HasReachedDestination());
-        Destroy(agent.gameObject, 2f);
+        Destroy(gameObject, 2f);
     }
 
     public override void OnClick()

@@ -6,7 +6,8 @@ public class ChairBehaviour : BaseBehaviour
 {
     [SerializeField]private CustomerBehaviour customerAssigned;
     [SerializeField]private DiningTableBehaviour diningTable;
-    private GridObject.Dir tableDir => GridObject.GetReverseDir(placedObject.dir);
+    public Transform customerPlace;
+    public GridObject.Dir TableDir => GridObject.GetReverseDir(placedObject.dir);
     public override void OnClick()
     {
         Debug.Log("clicked on a chair!");
@@ -17,16 +18,16 @@ public class ChairBehaviour : BaseBehaviour
     }
     public bool IsAvailable()
     {
-        return customerAssigned == null && diningTable != null && diningTable.IsAvailable(tableDir);
+        return customerAssigned == null && diningTable != null && diningTable.IsAvailable(TableDir);
     }
     public void Assign(CustomerBehaviour customer)
     {
         customerAssigned = customer;
-        diningTable.Dine(tableDir);
+        diningTable.Dine(TableDir);
     }
     public void Leave()
     {
         customerAssigned = null;
-        diningTable.FinishDining(tableDir);
+        diningTable.FinishDining(TableDir);
     }
 }
