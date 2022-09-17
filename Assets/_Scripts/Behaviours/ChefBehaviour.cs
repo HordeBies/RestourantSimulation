@@ -22,7 +22,7 @@ public class ChefBehaviour : NPCBehaviour
         {
             Debug.LogWarning("Chef can't reach to the destination");
         }
-        yield return new WaitUntil(() => HasReachedDestination());
+        yield return new WaitUntil(() => HasReachedDestination(true));
         CanCook = true;
         //Rotate into position
     }
@@ -34,7 +34,7 @@ public class ChefBehaviour : NPCBehaviour
         assignedCookingOven.ClearOven();
         CanCook = false;
         cafe.TryMove(this, emptyServingTable.placedObject);
-        yield return new WaitUntil(()=> HasReachedDestination());
+        yield return new WaitUntil(()=> HasReachedDestination(true));
         emptyServingTable.PutMeal(meal);
         yield return MoveToOven();
         Lock = false;

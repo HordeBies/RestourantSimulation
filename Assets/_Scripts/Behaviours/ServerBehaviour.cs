@@ -12,8 +12,9 @@ public class ServerBehaviour : NPCBehaviour
     {
         Debug.Log("Clicked on a server!");
     }
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         if (currentJob == null && !isWaitingForJob) StartCoroutine(DoNewJob());
     }
     private IEnumerator DoNewJob()

@@ -1,0 +1,105 @@
+.button {
+    width: 148px;
+    height: 155px;
+    background-image: url('project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Component/Button/btn_circle_01_blue.png?fileID=2800000&guid=a37ec89f5ca17463ea97a831015fd5a1&type=3#btn_circle_01_blue');
+    border-left-color: rgba(149, 149, 149, 0);
+    border-right-color: rgba(149, 149, 149, 0);
+    border-top-color: rgba(149, 149, 149, 0);
+    border-bottom-color: rgba(149, 149, 149, 0);
+    background-color: rgba(188, 188, 188, 0);
+    bottom: 100px;
+}
+
+.button:hover {
+    width: 148px;
+    height: 155px;
+    background-image: url('project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Component/Button/btn_circle_01_blue.png?fileID=2800000&guid=a37ec89f5ca17463ea97a831015fd5a1&type=3#btn_circle_01_blue');
+    border-left-color: rgba(149, 149, 149, 0);
+    border-right-color: rgba(149, 149, 149, 0);
+    border-top-color: rgba(149, 149, 149, 0);
+    border-bottom-color: rgba(149, 149, 149, 0);
+    background-color: rgba(188, 188, 188, 0);
+    -unity-background-image-tint-color: rgb(245, 245, 245);
+}
+
+.button:active {
+    width: 148px;
+    height: 155px;
+    background-image: url('project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Component/Button/btn_circle_01_blue.png?fileID=2800000&guid=a37ec89f5ca17463ea97a831015fd5a1&type=3#btn_circle_01_blue');
+    border-left-color: rgba(149, 149, 149, 0);
+    border-right-color: rgba(149, 149, 149, 0);
+    border-top-color: rgba(149, 149, 149, 0);
+    border-bottom-color: rgba(149, 149, 149, 0);
+    background-color: rgba(188, 188, 188, 0);
+    -unity-background-image-tint-color: rgb(200, 200, 200);
+}
+
+.status-button {
+    height: 70px;
+    flex-direction: row;
+    font-size: 30px;
+    border-left-color: rgba(149, 149, 149, 0);
+    border-right-color: rgba(149, 149, 149, 0);
+    border-top-color: rgba(149, 149, 149, 0);
+    border-bottom-color: rgba(149, 149, 149, 0);
+    background-color: rgba(188, 188, 188, 0);
+    background-image: url('project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Component/UI_Etc/status_frame.png?fileID=7803171745462721284&guid=743fc551622034093a11efcbcb9d49fc&type=3#top_status_bg_0');
+    -unity-slice-left: initial;
+    -unity-slice-right: initial;
+    -unity-background-image-tint-color: rgba(0, 0, 0, 0.49);
+    -unity-slice-top: 0;
+    -unity-slice-bottom: 0;
+    min-width: auto;
+    align-items: center;
+    overflow: hidden;
+    justify-content: flex-start;
+    flex-grow: 0;
+    flex-shrink: 1;
+    margin-left: 30px;
+}
+
+.status-button:hover {
+    height: 70px;
+    flex-direction: row;
+    font-size: 30px;
+    border-left-color: rgba(149, 149, 149, 0);
+    border-right-color: rgba(149, 149, 149, 0);
+    border-top-color: rgba(149, 149, 149, 0);
+    border-bottom-color: rgba(149, 149, 149, 0);
+    background-color: rgba(188, 188, 188, 0);
+    background-image: url('project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Component/UI_Etc/status_frame.png?fileID=7803171745462721284&guid=743fc551622034093a11efcbcb9d49fc&type=3#top_status_bg_0');
+    -unity-slice-left: initial;
+    -unity-slice-right: initial;
+    -unity-background-image-tint-color: rgba(0, 0, 0, 0.67);
+    -unity-slice-top: 0;
+    -unity-slice-bottom: 0;
+    min-width: auto;
+    align-items: center;
+    overflow: hidden;
+    justify-content: flex-start;
+    flex-grow: 0;
+    flex-shrink: 1;
+}
+
+.status-button:active {
+    height: 70px;
+    flex-direction: row;
+    font-size: 30px;
+    border-left-color: rgba(149, 149, 149, 0);
+    border-right-color: rgba(149, 149, 149, 0);
+    border-top-color: rgba(149, 149, 149, 0);
+    border-bottom-color: rgba(149, 149, 149, 0);
+    background-color: rgba(188, 188, 188, 0);
+    background-image: url('project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Component/UI_Etc/status_frame.png?fileID=7803171745462721284&guid=743fc551622034093a11efcbcb9d49fc&type=3#top_status_bg_0');
+    -unity-slice-left: initial;
+    -unity-slice-right: initial;
+    -unity-background-image-tint-color: rgba(0, 0, 0, 0.75);
+    -unity-slice-top: 0;
+    -unity-slice-bottom: 0;
+    min-width: auto;
+    align-items: center;
+    overflow: hidden;
+    justify-content: flex-start;
+    flex-grow: 0;
+    flex-shrink: 1;
+}

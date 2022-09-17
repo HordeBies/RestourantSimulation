@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class CustomerBehaviour : NPCBehaviour
 {
-    [SerializeField] private Transform model;
+
     public ChairBehaviour assignedChair;
     private Meal servedMeal;
     private void Start()
@@ -46,7 +46,7 @@ public class CustomerBehaviour : NPCBehaviour
         model.parent = transform;
         model.position = assignedChair.customerPlace.position;
         model.rotation = Quaternion.Euler(0, GetData().GetRotationAngle(assignedChair.TableDir), 0);
-        anim.Sit();
+        controller.Sit();
         agent.gameObject.SetActive(false);
     }
     private void FixStandUp()

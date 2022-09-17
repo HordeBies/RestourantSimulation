@@ -15,7 +15,6 @@ public class AnimationManager : MonoBehaviour
         // Don’t update position automatically
         agent.updatePosition = false;
         agent.updateRotation = false;
-        agent.autoBraking = false;
     }
 
     void Update()
@@ -52,6 +51,7 @@ public class AnimationManager : MonoBehaviour
     public void Sit()
     {
         anim.SetTrigger("sit");
+        transform.rotation = Quaternion.identity;
     }
     void OnAnimatorMove()
     {
