@@ -1,0 +1,39 @@
+.button {
+    position: absolute;
+    top: -50px;
+    right: 10%;
+    width: 150px;
+    height: 150px;
+    border-top-left-radius: 75px;
+    border-bottom-left-radius: 75px;
+    border-top-right-radius: 75px;
+    border-bottom-right-radius: 75px;
+    font-size: 30px;
+    -unity-font-style: bold;
+    background-color: rgb(39, 174, 96);
+    border-left-color: rgb(149, 149, 149);
+    border-right-color: rgb(149, 149, 149);
+    border-top-color: rgb(149, 149, 149);
+    border-bottom-color: rgb(149, 149, 149);
+    color: rgba(255, 255, 255, 255);
+}
+
+.button:active {
+    position: absolute;
+    top: -50px;
+    right: 10%;
+    width: 150px;
+    height: 150px;
+    border-top-left-radius: 75px;
+    border-bottom-left-radius: 75px;
+    border-top-right-radius: 75px;
+    border-bottom-right-radius: 75px;
+    font-size: 30px;
+    -unity-font-style: bold;
+    background-color: rgb(30, 120, 68);
+    border-left-color: rgb(149, 149, 149);
+    border-right-color: rgb(149, 149, 149);
+    border-top-color: rgb(149, 149, 149);
+    border-bottom-color: rgb(149, 149, 149);
+    color: rgba(255, 255, 255, 255);
+}
