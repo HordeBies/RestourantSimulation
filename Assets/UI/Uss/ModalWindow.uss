@@ -1,0 +1,140 @@
+.bg-button {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.59);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+    -unity-font-style: bold;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+}
+
+.tab {
+    justify-content: flex-start;
+    flex-direction: row;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    align-items: center;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.panel {
+    background-image: url('project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Component/Popup/popup_00_frame.png?fileID=6114881062073981623&guid=1f6ecbb7b97344026b5277644ad2ca95&type=3#common_popup_0');
+    min-width: auto;
+    min-height: auto;
+    -unity-background-scale-mode: stretch-to-fill;
+    -unity-slice-left: 0;
+    -unity-slice-top: 0;
+    -unity-slice-right: 0;
+    -unity-slice-bottom: 0;
+    flex-grow: 0;
+    align-items: center;
+}
+
+.underline {
+    background-image: url('project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Component/Frame/frame_lineframe_00.png?fileID=21300000&guid=6dcf33e2b0a1d459888fa4ad13355dc2&type=3#frame_lineframe_00');
+    width: 90%;
+    height: 66px;
+    flex-grow: 0;
+    left: 0;
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.cancel-button {
+    border-left-color: rgba(149, 149, 149, 0);
+    border-right-color: rgba(149, 149, 149, 0);
+    border-top-color: rgba(149, 149, 149, 0);
+    border-bottom-color: rgba(149, 149, 149, 0);
+    background-image: url('project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Component/Button/btn_rectangle_01_n_red.png?fileID=21300000&guid=6f5cc40e4a1cd458c9901849a7f52a07&type=3#btn_rectangle_01_n_red');
+    background-color: rgba(188, 188, 188, 0);
+    width: 150px;
+    height: 70px;
+}
+
+.cancel-button:active {
+    border-left-color: rgba(149, 149, 149, 0);
+    border-right-color: rgba(149, 149, 149, 0);
+    border-top-color: rgba(149, 149, 149, 0);
+    border-bottom-color: rgba(149, 149, 149, 0);
+    background-image: url('project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Component/Button/btn_rectangle_01_n_red.png?fileID=21300000&guid=6f5cc40e4a1cd458c9901849a7f52a07&type=3#btn_rectangle_01_n_red');
+    background-color: rgba(188, 188, 188, 0);
+    -unity-background-image-tint-color: rgba(192, 192, 192, 255);
+}
+
+.accept-button {
+    background-image: url('project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Component/Button/btn_rectangle_01_n_green.png?fileID=21300000&guid=6a63ef398306547be8cad5f83b8994a3&type=3#btn_rectangle_01_n_green');
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    width: 150px;
+    height: 70px;
+}
+
+.accept-button:active {
+    background-image: url('project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Component/Button/btn_rectangle_01_n_green.png?fileID=21300000&guid=6a63ef398306547be8cad5f83b8994a3&type=3#btn_rectangle_01_n_green');
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    -unity-background-image-tint-color: rgba(192, 192, 192, 255);
+}
+
+.icon-frame {
+    margin-left: 0;
+    margin-right: 100px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(188, 188, 188, 0);
+    background-image: url('project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Component/Frame/frame_stageframe_00_s1.png?fileID=21300000&guid=e6f468f0f2317498fa03405a1517b00b&type=3#frame_stageframe_00_s1');
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
+
+.icon {
+    width: 85%;
+    height: 80%;
+    bottom: 1px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    background-image: url('project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Demo/Demo_Character/character_sample_05.png?fileID=21300000&guid=ee6c8f37bd0f143a89513cadc662c0b0&type=3#character_sample_05');
+    -unity-background-scale-mode: scale-to-fit;
+}

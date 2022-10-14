@@ -1,0 +1,25 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Uss/ModalWindow.uss?fileID=7433441132597879392&amp;guid=d06a89ab0d3679141868892cc53918ae&amp;type=3#ModalWindow" />
+    <ui:Button display-tooltip-when-elided="true" name="background" class="bg-button" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 100px; border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; align-items: center; justify-content: center; flex-grow: 1;">
+        <ui:VisualElement class="panel" style="align-items: stretch; justify-content: flex-start;">
+            <ui:VisualElement class="tab" style="justify-content: center; align-items: center; margin-right: 150px; margin-bottom: 0;">
+                <ui:VisualElement style="background-image: url(&apos;project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Component/Icon_PictoIcons_(Original)/btn_icon_tool_3.png?fileID=2800000&amp;guid=96f6771f71ce24c3cabf660e262b1caa&amp;type=3#btn_icon_tool_3&apos;); width: 70px; height: 70px; -unity-background-scale-mode: scale-to-fit; margin-right: 130px; padding-right: 0;" />
+                <ui:Label text="Default Cooking Oven" display-tooltip-when-elided="true" class="text" style="-unity-text-align: middle-left;" />
+            </ui:VisualElement>
+            <ui:VisualElement class="underline" style="width: 95%; align-items: center; left: 2.5%;" />
+            <ui:VisualElement class="tab" style="justify-content: flex-start; margin-bottom: 10px; margin-top: 20px; flex-grow: 1;">
+                <ui:Button display-tooltip-when-elided="true" style="margin-left: 0; margin-right: 100px; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: 200px; height: 200px; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Component/Frame/frame_stageframe_00_s1.png?fileID=21300000&amp;guid=e6f468f0f2317498fa03405a1517b00b&amp;type=3#frame_stageframe_00_s1&apos;); align-items: center; justify-content: center; border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0);">
+                    <ui:VisualElement style="width: 85%; height: 80%; bottom: 1px; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Demo/Demo_Character/character_sample_04.png?fileID=21300000&amp;guid=f802ceda35f5c4662a240c6ceef56a64&amp;type=3#character_sample_04&apos;); -unity-background-scale-mode: scale-to-fit;" />
+                </ui:Button>
+                <ui:Label text="Select a chef to assign" display-tooltip-when-elided="true" class="text" />
+            </ui:VisualElement>
+            <ui:VisualElement class="tab" style="justify-content: flex-start; margin-bottom: 100px; margin-top: 20px; flex-grow: 1;">
+                <ui:Button display-tooltip-when-elided="true" class="icon-frame" style="padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: 200px; height: 200px; border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0);">
+                    <ui:VisualElement class="icon" />
+                    <ui:Label text="99:99" display-tooltip-when-elided="true" class="text" style="bottom: auto; position: absolute; top: 110%;" />
+                </ui:Button>
+                <ui:Label text="Select a meal to prepare" display-tooltip-when-elided="true" class="text" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:Button>
+</ui:UXML>

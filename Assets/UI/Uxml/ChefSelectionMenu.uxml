@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="ChefSelectionContent" src="project://database/Assets/UI/Uxml/ChefSelectionContent.uxml?fileID=9197481963319205126&amp;guid=08435fabb3df31c44b1bb7a533c75e0f&amp;type=3#ChefSelectionContent" />
+    <Style src="project://database/Assets/UI/Uss/ModalWindow.uss?fileID=7433441132597879392&amp;guid=d06a89ab0d3679141868892cc53918ae&amp;type=3#ModalWindow" />
+    <ui:Button display-tooltip-when-elided="true" name="background" class="bg-button">
+        <ui:VisualElement name="panel" class="panel" style="align-items: center; max-height: 80%; justify-content: flex-start;">
+            <ui:VisualElement class="tab" style="margin-bottom: 20px;">
+                <ui:Label text="Select A Chef to Assign" display-tooltip-when-elided="true" class="text" />
+            </ui:VisualElement>
+            <ui:VisualElement class="underline" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; left: 0;" />
+            <ui:ScrollView horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" touch-scroll-type="Elastic" style="margin-left: 20px; margin-right: 20px; margin-top: 20px; margin-bottom: 20px;">
+                <ui:Instance template="ChefSelectionContent" name="ChefSelectionContent" />
+                <ui:Instance template="ChefSelectionContent" name="ChefSelectionContent" />
+                <ui:Instance template="ChefSelectionContent" name="ChefSelectionContent" />
+                <ui:Instance template="ChefSelectionContent" name="ChefSelectionContent" />
+            </ui:ScrollView>
+            <ui:VisualElement class="tab" style="justify-content: space-around; width: 100%; margin-left: 0; margin-right: 0; margin-top: 20px; margin-bottom: 50px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; flex-grow: 0; flex-wrap: nowrap; flex-shrink: 0;">
+                <ui:Button text="Cancel" display-tooltip-when-elided="true" class="cancel-button text" style="-unity-text-outline-width: 1px;" />
+                <ui:Button text="Assign" display-tooltip-when-elided="true" class="accept-button text" style="-unity-background-scale-mode: stretch-to-fill; -unity-text-outline-width: 1px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:Button>
+</ui:UXML>
