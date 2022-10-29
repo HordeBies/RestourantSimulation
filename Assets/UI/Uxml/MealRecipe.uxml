@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement class="RecipeParent" style="width: 500px; height: 250px;">
+        <ui:Label text="Meal Name" display-tooltip-when-elided="true" class="text" style="-unity-text-align: upper-center;" />
+        <ui:VisualElement style="-unity-background-scale-mode: scale-to-fit; background-image: url(&apos;project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Component/Icon_ItemIcons_(Original)/icon_itemicon_meat.png?fileID=2800000&amp;guid=da6e6cef89ef4485a99bf262e902f2c0&amp;type=3#icon_itemicon_meat&apos;); height: auto; flex-grow: 1;" />
+        <ui:Label text="5G" display-tooltip-when-elided="true" class="text" style="-unity-text-align: upper-center;" />
+    </ui:VisualElement>
+</ui:UXML>

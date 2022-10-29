@@ -1,0 +1,27 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="HiringContent" src="project://database/Assets/UI/Uxml/HiringContent.uxml?fileID=9197481963319205126&amp;guid=ebcfd566f6c74af4c9a645f140393487&amp;type=3#HiringContent" />
+    <Style src="project://database/Assets/UI/Uss/ModalWindow.uss?fileID=7433441132597879392&amp;guid=d06a89ab0d3679141868892cc53918ae&amp;type=3#ModalWindow" />
+    <ui:Button display-tooltip-when-elided="true" name="background-button" class="bg-button" style="position: absolute;" />
+    <ui:Button display-tooltip-when-elided="true" name="background" picking-mode="Ignore" class="bg-button" style="border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0); background-color: rgba(0, 0, 0, 0); padding-bottom: 0; padding-top: 50px;">
+        <ui:VisualElement name="panel" class="panel" style="align-items: center; max-height: 85%; justify-content: flex-start;">
+            <ui:VisualElement class="tab" style="justify-content: space-around; width: 100%; margin-left: 0; margin-right: 0; margin-top: 50px; margin-bottom: 20px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; flex-grow: 0; flex-wrap: nowrap; flex-shrink: 0;">
+                <ui:Button display-tooltip-when-elided="true" name="chef-tab" style="width: 150px; font-size: 30px; background-color: rgba(188, 188, 188, 0); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); padding-left: 22px; margin-left: 4px; padding-right: 22px; align-items: center; overflow: visible; flex-direction: column; flex-shrink: 0; justify-content: center; background-image: none;">
+                    <ui:VisualElement style="position: relative; bottom: 10px; left: auto; top: auto; right: auto; background-image: url(&apos;project://database/Assets/_Plugins/icons/Chef_Inverted.png?fileID=2800000&amp;guid=8db16f133fcef3a4cb319285870d9c76&amp;type=3#Chef_Inverted&apos;); -unity-background-scale-mode: scale-to-fit; width: 124px; height: 124px;" />
+                    <ui:VisualElement name="chef-highlight" style="background-color: rgba(0, 0, 0, 0); height: 41px; margin-bottom: 0; padding-bottom: 0; width: 150px; border-top-left-radius: 0; border-top-right-radius: 0; display: flex; background-image: url(&apos;project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Component/Frame/frame_tabmenu_focus_01_s.png?fileID=21300000&amp;guid=43a71eab10fec48d9ba798863d1add5c&amp;type=3#frame_tabmenu_focus_01_s&apos;); border-bottom-left-radius: 0; border-bottom-right-radius: 0; transform-origin: center; bottom: -10px; position: absolute;" />
+                </ui:Button>
+                <ui:Button display-tooltip-when-elided="true" name="server-tab" style="width: 150px; font-size: 30px; background-color: rgba(188, 188, 188, 0); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); padding-left: 22px; margin-left: 4px; padding-right: 22px; align-items: center; overflow: visible; flex-direction: column; flex-shrink: 0; justify-content: center; background-image: none;">
+                    <ui:VisualElement style="position: relative; bottom: 10px; left: auto; top: auto; right: auto; background-image: url(&apos;project://database/Assets/_Plugins/icons/Server_Inverted.png?fileID=2800000&amp;guid=36f6fc4e9b8f1f247b73be3862986909&amp;type=3#Server_Inverted&apos;); -unity-background-scale-mode: scale-to-fit; width: 124px; height: 124px;" />
+                    <ui:VisualElement name="server-highlight" style="background-color: rgba(0, 0, 0, 0); height: 41px; margin-bottom: 0; padding-bottom: 0; width: 150px; border-top-left-radius: 0; border-top-right-radius: 0; display: flex; background-image: url(&apos;project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Component/Frame/frame_tabmenu_focus_01_s.png?fileID=21300000&amp;guid=43a71eab10fec48d9ba798863d1add5c&amp;type=3#frame_tabmenu_focus_01_s&apos;); border-bottom-left-radius: 0; border-bottom-right-radius: 0; transform-origin: center; bottom: -10px; position: absolute;" />
+                </ui:Button>
+            </ui:VisualElement>
+            <ui:ScrollView horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" touch-scroll-type="Elastic" name="content-parent" style="margin-left: 20px; margin-right: 20px; margin-top: 20px; margin-bottom: 20px; border-bottom-right-radius: 0;">
+                <ui:Instance template="HiringContent" name="HiringContent" />
+                <ui:Instance template="HiringContent" name="HiringContent" />
+                <ui:Instance template="HiringContent" name="HiringContent" />
+                <ui:Instance template="HiringContent" name="HiringContent" />
+                <ui:Instance template="HiringContent" name="HiringContent" />
+                <ui:Instance template="HiringContent" name="HiringContent" />
+            </ui:ScrollView>
+        </ui:VisualElement>
+    </ui:Button>
+</ui:UXML>

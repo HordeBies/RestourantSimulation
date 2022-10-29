@@ -1,0 +1,29 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Uss/ModalWindow.uss?fileID=7433441132597879392&amp;guid=d06a89ab0d3679141868892cc53918ae&amp;type=3#ModalWindow" />
+    <ui:VisualElement name="background-button" class="bg-button" style="flex-grow: 1; position: absolute;" />
+    <ui:VisualElement name="background" picking-mode="Ignore" class="bg-button" style="flex-grow: 1; position: absolute; background-color: rgba(255, 255, 255, 0);">
+        <ui:VisualElement focusable="true" picking-mode="Ignore" class="panel" style="align-items: stretch; justify-content: flex-start; width: auto;">
+            <ui:VisualElement class="tab" style="justify-content: flex-start; align-items: center; margin-right: 150px; margin-bottom: 0; margin-left: 100px;">
+                <ui:VisualElement name="serving-table-icon" style="background-image: url(&apos;project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Component/Icon_PictoIcons_(Original)/btn_icon_tool_3.png?fileID=2800000&amp;guid=96f6771f71ce24c3cabf660e262b1caa&amp;type=3#btn_icon_tool_3&apos;); width: 70px; height: 70px; -unity-background-scale-mode: scale-to-fit; margin-right: 50px; padding-right: 0;" />
+                <ui:Label text="Serving Table" display-tooltip-when-elided="true" name="serving-table-label" class="text" style="-unity-text-align: middle-left;" />
+            </ui:VisualElement>
+            <ui:VisualElement class="underline" style="width: 95%; align-items: center; left: 2.5%;" />
+            <ui:VisualElement class="underline" style="left: 2.5%; width: 95%; background-image: none; justify-content: flex-end;">
+                <ui:Label text="Default Meal" display-tooltip-when-elided="true" name="meal-name" class="text" style="align-items: stretch; -unity-text-align: upper-center;" />
+            </ui:VisualElement>
+            <ui:VisualElement class="tab" style="justify-content: center; margin-bottom: 10px; margin-top: 20px; flex-grow: 1;">
+                <ui:Button display-tooltip-when-elided="true" name="meal-button" style="margin-left: 0; margin-right: 50px; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: 200px; height: 200px; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Component/Frame/frame_stageframe_00_s1.png?fileID=21300000&amp;guid=e6f468f0f2317498fa03405a1517b00b&amp;type=3#frame_stageframe_00_s1&apos;); align-items: center; justify-content: center; border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0);">
+                    <ui:VisualElement name="meal-icon" style="width: 85%; height: 80%; bottom: 1px; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/_Plugins/GUI%20PRO%20Kit%20-%20Fantasy%20RPG/ResourcesData/Sprites/Component/Icon_ItemIcons_(Original)/icon_itemicon_meat.png?fileID=21300000&amp;guid=da6e6cef89ef4485a99bf262e902f2c0&amp;type=3#icon_itemicon_meat&apos;); -unity-background-scale-mode: scale-to-fit;" />
+                </ui:Button>
+                <ui:Label text="X" display-tooltip-when-elided="true" class="text" style="margin-right: 20px;" />
+                <ui:Label text="999" display-tooltip-when-elided="true" name="meal-servings" class="text" />
+            </ui:VisualElement>
+            <ui:VisualElement class="underline" style="left: 2.5%; width: 95%; background-image: none; justify-content: center;">
+                <ui:Label text="999$" display-tooltip-when-elided="true" name="meal-price" enable-rich-text="true" class="text" style="align-items: stretch; -unity-text-align: upper-center;" />
+            </ui:VisualElement>
+            <ui:VisualElement class="tab" style="justify-content: space-around; width: 100%; margin-left: 0; margin-right: 0; margin-top: 20px; margin-bottom: 50px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; flex-grow: 0; flex-wrap: nowrap; flex-shrink: 0;">
+                <ui:Button text="Clear" display-tooltip-when-elided="true" name="clear-button" class="cancel-button text" style="-unity-text-outline-width: 1px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
