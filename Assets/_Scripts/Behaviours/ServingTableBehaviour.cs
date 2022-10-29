@@ -34,13 +34,15 @@ public class ServingTableBehaviour : BaseBehaviour
         }
         return servedMeal;
     }
-    private void ClearTable()
+    public void ClearTable()
     {
         meal = null;
+        remainingServings = 0;
         Destroy(mealPrefab);
     }
     public override void OnClick()
     {
+        cafe.ui.ShowMenu(this);
         Debug.Log("Clicked on a serving table");
     }
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ChairBehaviour : BaseBehaviour
 {
-    [SerializeField]private CustomerBehaviour customerAssigned;
-    [SerializeField]private DiningTableBehaviour diningTable;
+    public CustomerBehaviour customerAssigned;
+    public DiningTableBehaviour diningTable;
     public Transform customerPlace;
     public GridObject.Dir TableDir => GridObject.GetReverseDir(placedObject.dir);
     public override void OnClick()
@@ -23,7 +23,7 @@ public class ChairBehaviour : BaseBehaviour
     public void Assign(CustomerBehaviour customer)
     {
         customerAssigned = customer;
-        diningTable.Dine(TableDir);
+        diningTable.Dine(TableDir,customer);
     }
     public void Leave()
     {

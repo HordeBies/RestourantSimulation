@@ -41,14 +41,28 @@ public abstract class NPCBehaviour : BaseBehaviour
         else
             controller.Move(Vector3.zero, false, false);
     }
+    public void Hide()
+    {
+        if(agent.gameObject.activeInHierarchy)
+            agent.isStopped = true;
+        model.gameObject.SetActive(false);
+    }
+    public void Show()
+    {
+        if (agent.gameObject.activeInHierarchy)
+            agent.isStopped = false;
+        model.gameObject.SetActive(true);
+        controller.RefreshAnimator();
+    }
     public bool Move(Vector3 to)
     {
         Debug.Log("Trying to Reach: " + to);
         agent.isStopped = false;
         return agent.SetDestination(to);
     }
-    protected void PostNavRotationSnap(Vector3 to)
+    protected void PostNavRotationSnap()
     {
+        //TODO: add rotation input to know where to turn
         var current = model.rotation.eulerAngles;
         model.rotation = Quaternion.Euler(new (current.x,Mathf.Round(current.y / 90) * 90,current.z));
     }
@@ -65,6 +79,8 @@ public abstract class NPCBehaviour : BaseBehaviour
                 if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
                 {
                     agent.isStopped = true;
+                    //if (postFix) //TODO: handle postnavrotation
+                    //    PostNavRotationSnap();
                     return true;
                 }
             }

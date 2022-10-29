@@ -7,6 +7,7 @@ public class CookingOvenBehaviour : BaseBehaviour
     public ChefBehaviour assignedChef { private set; get; }
     public Meal meal { private set; get; }
     public float RemainingTime { private set; get; }
+    public string RemainingTimeFormatted => System.TimeSpan.FromSeconds(RemainingTime).ToString("mm':'ss");
     [SerializeField] private GameObject cookingPot;
     [SerializeField] private Transform mealPos;
     private GameObject mealPrefab;
@@ -21,6 +22,8 @@ public class CookingOvenBehaviour : BaseBehaviour
     }
     public void AssignChef(ChefBehaviour chef)
     {
+        if (assignedChef == chef) return;
+        if (assignedChef != null) assignedChef.StartCoroutine(assignedChef.AssignToCookingOven(null));
         assignedChef = chef;
         if(chef != null) chef.StartCoroutine(chef.AssignToCookingOven(this));
     }
@@ -60,6 +63,6 @@ public class CookingOvenBehaviour : BaseBehaviour
     public override void OnClick()
     {
         Debug.Log("Clicked on a cooking oven!");
-        cafe.ui.OpenHUD(this);
+        cafe.ui.ShowMenu(this);
     }
 }

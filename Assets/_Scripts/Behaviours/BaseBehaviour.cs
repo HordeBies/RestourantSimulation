@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseBehaviour : MonoBehaviour
+public class BaseBehaviour : MonoBehaviour
 {
     protected CafeSimulationManager cafe;
     public PlacedObject placedObject;
@@ -11,14 +11,20 @@ public abstract class BaseBehaviour : MonoBehaviour
 
     protected virtual void Awake()
     {
-        Debug.Log("BaseBehaviour Awake!");
         placedObject = GetComponent<PlacedObject>();
         cafe = CafeSimulationManager.instance;
     }
 
-    public abstract void OnClick();
+    public virtual void OnClick()
+    {
+        Debug.Log("Clicked on an EmptyBehaviour");
+    }
     public GridObject GetData()
     {
         return placedObject.placedObjectTypeSO;
+    }
+    public virtual void Load(BaseBehaviour behaviour)
+    {
+        Debug.Log("Loading Behaviour!");
     }
 }

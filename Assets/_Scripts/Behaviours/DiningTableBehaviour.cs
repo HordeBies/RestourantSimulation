@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DiningTableBehaviour : BaseBehaviour
@@ -11,34 +12,31 @@ public class DiningTableBehaviour : BaseBehaviour
         Dining,
         Trash,
     }
-    private Dictionary<GridObject.Dir, State> positions = new()
-    {
-        { GridObject.Dir.Down, State.Empty },
-        { GridObject.Dir.Left, State.Empty },
-        { GridObject.Dir.Right, State.Empty },
-        { GridObject.Dir.Up, State.Empty },
-    };
+    private State state;
+    public CustomerBehaviour customer;
     public override void OnClick()
     {
         Debug.Log("clicked on a dining table!");
     }
-    public void Dine(GridObject.Dir dir)
+    public void Dine(GridObject.Dir dir, CustomerBehaviour customer)
     {
-        positions[dir] = State.Dining;
+        state = State.Dining;
+        this.customer = customer;
     }
     public void FinishDining(GridObject.Dir dir)
     {
         //TODO: Create Clear Table Job and make state = trash
-        positions[dir] = State.Empty;
+        this.customer = null;
+        state = State.Empty;
     }
     public void ClearTable(GridObject.Dir dir)
     {
-        positions[dir] = State.Empty;
+        state = State.Empty;
     }
 
     public bool IsAvailable(GridObject.Dir dir)
     {
-        return positions[dir] == State.Empty;
+        return state == State.Empty;
     }
 
 }

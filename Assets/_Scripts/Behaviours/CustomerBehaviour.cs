@@ -46,7 +46,7 @@ public class CustomerBehaviour : NPCBehaviour
         model.parent = transform;
         model.position = assignedChair.customerPlace.position;
         model.rotation = Quaternion.Euler(0, GetData().GetRotationAngle(assignedChair.TableDir), 0);
-        controller.Sit();
+        controller.SitDown();
         agent.gameObject.SetActive(false);
     }
     private void FixStandUp()
@@ -56,6 +56,7 @@ public class CustomerBehaviour : NPCBehaviour
         model.parent = agent.transform;
         model.localPosition = Vector3.zero;
         model.localRotation = Quaternion.identity;
+        controller.StandUp();
     }
     private IEnumerator PlaceOrder()
     {
@@ -88,8 +89,13 @@ public class CustomerBehaviour : NPCBehaviour
         }
         yield return new WaitUntil(() => HasReachedDestination());
         Destroy(gameObject, 2f);
+        cafe.CustomerLeaved(this);
     }
-
+    public void ForceLeave()
+    {
+        FixStandUp();
+        StartCoroutine(Exit());
+    }
     public override void OnClick()
     {
         Debug.Log("Clicked on a customer!");

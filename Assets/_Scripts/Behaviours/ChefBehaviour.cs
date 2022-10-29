@@ -10,17 +10,20 @@ public class ChefBehaviour : NPCBehaviour
     public IEnumerator AssignToCookingOven(CookingOvenBehaviour cookingOven)
     {
         yield return new WaitWhile(() => Lock);
-        if (assignedCookingOven != null && assignedCookingOven != cookingOven) assignedCookingOven.AssignChef(null);
-        if (assignedCookingOven == cookingOven) yield break;
         assignedCookingOven = cookingOven;
         CanCook = false;
-        yield return MoveToOven();
+        if(cookingOven != null)
+            yield return MoveToOven();
+        else
+        {
+            //TODO: Idle Wander Behaviour
+        }
     }
     public IEnumerator MoveToOven()
     {
         if (!cafe.TryMove(this, assignedCookingOven.placedObject, assignedCookingOven.placedObject.dir))
         {
-            Debug.LogWarning("Chef can't reach to the destination");
+            Debug.LogWarning("Chef can't reach to the cooking oven");
         }
         yield return new WaitUntil(() => HasReachedDestination(true));
         CanCook = true;
@@ -42,5 +45,9 @@ public class ChefBehaviour : NPCBehaviour
     public override void OnClick()
     {
         Debug.Log("Clicked on a chef!");
+    }
+    public string GetStatus()
+    {
+        return assignedCookingOven != null ? "assigned" : "idle";
     }
 }
