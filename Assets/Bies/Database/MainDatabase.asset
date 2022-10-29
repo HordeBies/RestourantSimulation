@@ -17,6 +17,7 @@ MonoBehaviour:
   wallPapers:
   - {fileID: 11400000, guid: 5b8269937cb743148af9dae05dc13856, type: 2}
   chairs:
+  - {fileID: 11400000, guid: 5f14ff968c0b62a409d0916a08ee87fe, type: 2}
   - {fileID: 11400000, guid: 64da960a7dd0101459614b164f478467, type: 2}
   diningTables:
   - {fileID: 11400000, guid: c2929be040a617944a6bac3837dedd1b, type: 2}
@@ -28,11 +29,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ada029da998abcf4db7dd38cd3c27a9b, type: 2}
   chefs:
   - {fileID: 11400000, guid: 4044852b8b17c7e408d96956deb3f9c0, type: 2}
+  - {fileID: 11400000, guid: 097dbed3eaba8de40b461d811741a25d, type: 2}
+  - {fileID: 11400000, guid: d8c2686a59093324aaaa1f41c9850a4b, type: 2}
+  - {fileID: 11400000, guid: a2313b8e37302604f8e8ea93e0298fe6, type: 2}
   servers:
   - {fileID: 11400000, guid: 4a530f01936597d418d847e124c4df36, type: 2}
   customers:
   - {fileID: 11400000, guid: 0fb2ed6804268a2419b9e6fbb3707eae, type: 2}
   meals:
   - {fileID: 11400000, guid: f38114c579e2f6f4bbe5d23747d67799, type: 2}
-  uiSlotPrefab: {fileID: 2138007873129294427, guid: c101d743788b1b9478e50fd736129b4b,
-    type: 3}

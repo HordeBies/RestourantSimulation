@@ -19,3 +19,5 @@ MonoBehaviour:
   visual: {fileID: 7563335285279829324, guid: 49c24efe21795334eae073b66edcfc6f, type: 3}
   width: 1
   length: 1
+  price: 10
+  unlockedLevel: 1
