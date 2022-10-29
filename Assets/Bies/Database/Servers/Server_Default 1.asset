@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Server_Default 1
   m_EditorClassIdentifier: 
   Type: 10
-  nameString: Default Server
+  nameString: "Ali T\xFCrk"
   icon: {fileID: 0}
   prefab: {fileID: 7921875928063873020, guid: bf3eb323ba9703d4996c77acfb674a1e, type: 3}
   visual: {fileID: 7921875928063873020, guid: 69fa0e1cfe9b06a4abfa4f34d155666d, type: 3}
   width: 1
   length: 1
-  price: 10
-  unlockedLevel: 1
+  price: 100
+  unlockedLevel: 10
