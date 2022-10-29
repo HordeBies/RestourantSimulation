@@ -34,7 +34,6 @@ public class ConstructionManager : MonoBehaviour
     }
     public void SetSelectedGridObject(GridObject to)
     {
-        if (!to.canBeSelected) return;
         selectedGridObject = to;
         Debug.Log("Clicked to " + selectedGridObject?.nameString);
         OnSelectedChanged?.Invoke(selectedGridObject);
@@ -119,12 +118,28 @@ public class ConstructionManager : MonoBehaviour
             var rotationOffset = selectedGridObject.GetRotationOffset(dir);
             var placedObjectWorldPosition = CafeGrid.GetWorldPosition(x, z) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * CafeGrid.GetCellSize();
             var placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), dir, selectedGridObject);
-            gridPositionList.ForEach(position => CafeGrid.GetGridTile(position.x, position.y).SetPlacedObject(placedObject));
-
+            foreach (var position in gridPositionList)
+            {
+                CafeGrid.GetGridTile(position.x, position.y).SetPlacedObject(placedObject, out var previous);
+                if (previous != null) OnObjectRemoved?.Invoke(previous);
+            }
             OnObjectPlaced?.Invoke(placedObject);
         }
         else
             UtilsClass.CreateWorldTextPopup("Cannot build here!", Mouse3D.GetMouseWorldPosition());
+    }
+    public void Demolish(PlacedObject obj, Vector2Int pos)
+    {
+        var gridObject = CafeGrid.GetGridTile(pos);
+        if (gridObject.RemovePlacedObject(obj))
+        {
+            OnObjectRemoved?.Invoke(obj);
+            obj.DestroySelf();
+        }
+        else
+        {
+            Debug.LogError("Couldn't demolish");
+        }
     }
     #endregion
     
@@ -227,21 +242,25 @@ public class CafeGridTile
         this.z = z;
     }
 
-    public void SetPlacedObject(PlacedObject newPlacedObject)
+    public void SetPlacedObject(PlacedObject newPlacedObject, out PlacedObject previous)
     {
+        previous = default;
         switch (newPlacedObject?.Type)
         {
             case ObjectType.FloorTile:
                 //TODO: Pack up old floor tile
+                previous = floorTile;
                 floorTile?.DestroySelf();
                 floorTile = newPlacedObject;
                 break;
             case ObjectType.Door:
+                previous = doorTile;
                 doorTile?.DestroySelf();
                 doorTile = newPlacedObject;
                 break;
             case ObjectType.Wallpaper:
                 //TODO: Pack up old wall tile
+                previous = floorTile;
                 placedObject?.DestroySelf();
                 placedObject = newPlacedObject;
                 break;
@@ -254,7 +273,6 @@ public class CafeGridTile
                 placedObject = newPlacedObject;
                 break;
         }
-
         grid.TriggerGridTileChanged(x, z);
     }
 
@@ -276,6 +294,30 @@ public class CafeGridTile
     {
         floorTile = null;
         grid.TriggerGridTileChanged(x, z);
+    }
+    public bool RemovePlacedObject(PlacedObject obj)
+    {
+        var removed = false;
+        if (obj.IsNPC)
+        {
+            removed = true;
+        }
+        else if(obj == doorTile)
+        {
+            doorTile = null;
+            removed = true;
+        }
+        else if(obj == floorTile)
+        {
+            floorTile = null;
+            removed = true;
+        }
+        else if(obj == placedObject)
+        {
+            placedObject = null;
+            removed = true;
+        }
+        return removed;
     }
 
     public override string ToString()
