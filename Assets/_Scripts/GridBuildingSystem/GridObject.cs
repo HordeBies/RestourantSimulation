@@ -57,7 +57,8 @@ public class GridObject : ScriptableObject
     public Transform visual;
     public int width;
     public int length;
-    public bool canBeSelected = true;
+    public int price;
+    public int unlockedLevel;
 
     public override string ToString()
     {

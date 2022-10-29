@@ -18,7 +18,7 @@ public class PlacedObject : MonoBehaviour {
     public GridObject placedObjectTypeSO;
     public Vector2Int origin;
     public GridObject.Dir dir;
-
+    public bool IsNPC => Type == ObjectType.Chef || Type == ObjectType.Server || Type == ObjectType.Customer;
     private void Setup(GridObject placedObjectTypeSO, Vector2Int origin, GridObject.Dir dir) {
         this.placedObjectTypeSO = placedObjectTypeSO;
         this.origin = origin;

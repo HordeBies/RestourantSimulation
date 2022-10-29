@@ -124,6 +124,19 @@ public class GridXZ<TGridObject>
         GetXZ(worldPosition, out x, out z);
         return GetGridTile(x, z);
     }
+    public TGridObject GetGridTile(Vector2Int gridPosition)
+    {
+        int x = gridPosition.x, z = gridPosition.y;
+
+        if (x >= 0 && z >= 0 && x < width && z < length)
+        {
+            return gridArray[x, z];
+        }
+        else
+        {
+            return default(TGridObject);
+        }
+    }
 
     public Vector2Int ValidateGridPosition(Vector2Int gridPosition)
     {

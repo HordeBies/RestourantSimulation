@@ -7,6 +7,8 @@ public class Meal : ScriptableObject
     public string MealName;
     public int Servings;
     public float PrepTime;
+    public int price;
+    public int requiredLevel;
     public Transform prefab;
     public Sprite Icon;
 }
