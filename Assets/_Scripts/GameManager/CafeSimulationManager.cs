@@ -6,12 +6,13 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using Bies.Game;
 
 public class CafeSimulationManager : MonoBehaviour
 {
     public static CafeSimulationManager instance;
     public static Func<PlacedObject> GetDoorTile;
-    public SimulationPanel ui => SimulationPanel.instance;
+    public GameUIManager ui => GameUIManager.instance;
 
     public Queue<ServerJob> ServerJobs = new();
 
@@ -21,7 +22,7 @@ public class CafeSimulationManager : MonoBehaviour
     private List<CookingOvenBehaviour> CookingOvens = new();
 
     private List<CustomerBehaviour> Customers = new();
-    private List<PlacedObject> Servers = new();
+    private List<ServerBehaviour> Servers = new();
     public List<ChefBehaviour> Chefs { private set; get; } = new();
 
 
@@ -29,12 +30,17 @@ public class CafeSimulationManager : MonoBehaviour
     {
         instance = this;
         ConstructionManager.OnObjectPlaced += AddNewObject;
+        ConstructionManager.OnObjectRemoved += RemoveObject;
     }
 
     public void SpawnRandomCustomer() //Instead of returning spawned object, if anything goes wrong, i call an event on successfull spawn
     {
         var doorTile = GetDoorTile?.Invoke();
         ConstructionManager.instance.Spawn(doorTile.origin, GridObject.GetReverseDir(doorTile.dir), GameManager.instance.GetRandomCustomer());
+    }
+    public void CustomerLeaved(CustomerBehaviour customer)
+    {
+        Customers.Remove(customer);
     }
     public void PrepareRandomMeal()
     {
@@ -46,6 +52,38 @@ public class CafeSimulationManager : MonoBehaviour
             return;
         }
         oven.Cook(meal);
+    }
+    public void HideNPCs()
+    {
+        //TODO: Store npc status
+        foreach (var npc in Chefs)
+        {
+            npc.Hide();
+        }
+        foreach (var npc in Servers)
+        {
+            npc.Hide();
+        }
+        foreach (var npc in Customers)
+        {
+            npc.Hide();
+        }
+    }
+    public void ShowNPCs()
+    {
+        //TODO: Restore npc status
+        foreach (var npc in Chefs)
+        {
+            npc.Show();
+        }
+        foreach (var npc in Servers)
+        {
+            npc.Show();
+        }
+        foreach (var npc in Customers)
+        {
+            npc.Show();
+        }
     }
     public bool AssignSeat(CustomerBehaviour customer, out ChairBehaviour chair)
     {
@@ -109,7 +147,7 @@ public class CafeSimulationManager : MonoBehaviour
     }
     public bool TryMove(NPCBehaviour npc, PlacedObject to, GridObject.Dir side)
     {
-        var result = ConstructionManager.instance.GetPlacedObject(to.GetAdjacentTilePos(side)) == null;
+        var result = ConstructionManager.instance.GetPlacedObject(to.GetAdjacentTilePos(side)) == null; 
         if (result)
         {
             npc.Move(ConstructionManager.instance.GetBorder(to, side));
@@ -172,7 +210,8 @@ public class CafeSimulationManager : MonoBehaviour
                 Chefs.Add(chef);
                 break;
             case ObjectType.Server:
-                Servers.Add(obj);
+                var server = obj.GetComponent<ServerBehaviour>();
+                Servers.Add(server);
                 break;
             default:
                 break;
@@ -219,10 +258,63 @@ public class CafeSimulationManager : MonoBehaviour
     {
         chair = obj.GetComponent<ChairBehaviour>();
         var frontObj = ConstructionManager.instance.GetPlacedObject(obj.GetFrontTilePos());
-        if (frontObj != null && frontObj.Type == ObjectType.DiningTable)
-            chair.SetDiningTable(frontObj.GetComponent<DiningTableBehaviour>());
+        if(frontObj != null)
+        {
+            if (frontObj.Type == ObjectType.DiningTable)
+                chair.SetDiningTable(frontObj.GetComponent<DiningTableBehaviour>());
+            else
+                chair.SetDiningTable(null);
+        }
     }
+    private void RemoveObject(PlacedObject obj)
+    {
+        switch (obj.Type)
+        {
+            case ObjectType.NaN:
+                Debug.LogError("NAN Object Type Removed!");
+                break;
+            case ObjectType.Chair:
+                var chair = Chairs.Find(i => i.placedObject == obj);
+                if(chair.customerAssigned != null)
+                {
+                    chair.customerAssigned.StopAllCoroutines();
+                    chair.customerAssigned.ForceLeave();
+                }
+                Chairs.Remove(chair);
+                break;
+            case ObjectType.CookingOven:
+                var cookingOven = CookingOvens.Find(i => i.placedObject == obj);
+                if(cookingOven.assignedChef != null)
+                {
+                    cookingOven.assignedChef.AssignToCookingOven(null);
+                }
+                CookingOvens.Remove(cookingOven);
+                break;
+            case ObjectType.DiningTable:
+                var diningTable = DiningTables.Find(i => i.placedObject == obj);
+                if(diningTable.customer != null)
+                {
+                    diningTable.customer.StopAllCoroutines();
+                    diningTable.customer.ForceLeave();
+                }
+                DiningTables.Remove(diningTable);
+                break;
+            case ObjectType.FloorTile:
+                break;
+            case ObjectType.ServingTable:
+                var servingTable = ServingTables.Find(i => i.placedObject = obj);
+                //TODO: Prevent meal loss
+                break;
+            default:
+                break;
+        }
 
+        foreach (var dir in GridObject.Directions)
+        {
+            UpdateCache(ConstructionManager.instance.GetPlacedObject(obj.GetAdjacentTilePos(dir)));
+        }
+    }
+    //Input Handling
     public void OnLeftClick(InputAction.CallbackContext ctx)
     {
         if (!ctx.started || GameManager.PointerOverUI) return;
@@ -235,5 +327,9 @@ public class CafeSimulationManager : MonoBehaviour
             Debug.Log(gridObject.ToString());
         }
     }
-
+    public void OnRightClick(InputAction.CallbackContext ctx)
+    {
+        if (!ctx.started || GameManager.PointerOverUI) return;
+        SpawnRandomCustomer();
+    }
 }
