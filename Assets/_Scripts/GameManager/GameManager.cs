@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public bool showGridDebug;
 
     private GameUIManager uiManager => GameUIManager.instance;
-    private GameDataManager gameData => GameDataManager.instance;
+    private GameDataManager gameDataManager => GameDataManager.instance;
     private PlayerInput playerInput;
 
     private void Awake()
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
     {
         if(co.GetData().meal == null)
         {
-            uiManager.ShowMenu(Database.Meals,co);
+            uiManager.ShowMenu(gameDataManager.gameData.CookBookData.FindAll(i => i.isLearned),co);
         }
         else
         {
@@ -83,12 +83,14 @@ public class GameManager : MonoBehaviour
     public void MealSelectionMenu_PrepareMeal(CookingOvenBehaviour co, Meal meal)
     {
         co.Cook(meal);
+        gameDataManager.PurchaseMeal(meal);
         uiManager.HideMealSelectionMenu();
     }
 
     public void HiringMenu_HireWorker(GameData.WorkerData data)
     {
-        //Hire
+        ConstructionManager.instance.SpawnAtDoor(data.worker);
+        gameDataManager.HireWorker(data);
         Debug.Log("Hired " + data.worker.ToString());
     }
     #endregion

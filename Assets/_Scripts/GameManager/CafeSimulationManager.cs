@@ -156,6 +156,7 @@ public class CafeSimulationManager : MonoBehaviour
     }
     public bool TryMove(NPCBehaviour npc, PlacedObject to)
     {
+        if (to == null) return true;
         bool moved = false;
         foreach (var dir in GridObject.Directions)
         {
@@ -299,11 +300,20 @@ public class CafeSimulationManager : MonoBehaviour
                 }
                 DiningTables.Remove(diningTable);
                 break;
-            case ObjectType.FloorTile:
-                break;
             case ObjectType.ServingTable:
                 var servingTable = ServingTables.Find(i => i.placedObject = obj);
+                ServingTables.Remove(servingTable);
                 //TODO: Prevent meal loss
+                break;
+            case ObjectType.Chef:
+                //TODO: Handle remove
+                var chef = Chefs.Find(i => i.placedObject = obj);
+                Chefs.Remove(chef);
+                break;
+            case ObjectType.Server:
+                //TODO: Handle remove
+                var server = Servers.Find(i => i.placedObject = obj);
+                Servers.Remove(server);
                 break;
             default:
                 break;

@@ -11,6 +11,8 @@ public class ServeCustomerJob : ServerJob
     }
     public override IEnumerator Execute(ServerBehaviour server)
     {
+        base.Execute(server);
+
         ServingTableBehaviour servingTable = null;
         yield return new WaitUntil(()=>cafe.GetServingTableForCustomerMeal(out servingTable));
         cafe.TryMove(server, servingTable.placedObject);

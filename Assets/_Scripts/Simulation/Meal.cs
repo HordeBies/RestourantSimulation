@@ -7,8 +7,10 @@ public class Meal : ScriptableObject
     public string MealName;
     public int Servings;
     public float PrepTime;
-    public int price;
+    public int PrepPrice;
+    public int PortionPrice;
     public int requiredLevel;
     public Transform prefab;
     public Sprite Icon;
+    public string PrepTimeFormatted => System.TimeSpan.FromSeconds(PrepTime).ToString("mm':'ss");
 }

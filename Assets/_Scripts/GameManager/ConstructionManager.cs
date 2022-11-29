@@ -96,6 +96,10 @@ public class ConstructionManager : MonoBehaviour
             return Quaternion.identity;
         }
     }
+    public void SpawnAtDoor(GridObject gridObjectToSpawn)
+    {
+        Spawn(CafeGridTile.DoorTile.origin, GridObject.GetReverseDir(CafeGridTile.DoorTile.dir), gridObjectToSpawn);
+    }
     public void Spawn(Vector2Int pos, GridObject.Dir newDir, GridObject newSelectedGridObject)
     {
         int x = pos.x;
@@ -206,7 +210,6 @@ public class CafeGridTile
     private PlacedObject placedObject;
     private PlacedObject floorTile;
     private static PlacedObject doorTile;
-    private static PlacedObject registerTile;
     public static PlacedObject DoorTile => doorTile;
 
     public bool CanBuild(GridObject gridObject)

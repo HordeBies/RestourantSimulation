@@ -62,7 +62,7 @@ namespace Bies.Game.UI
                 var price = content.Q<Label>(k_ContentPrice);
                 price.text = item.worker.price.ToString();
                 var hire = content.Q(k_ContentHireButton);
-                hire.RegisterCallback<ClickEvent>((evt) => { OnHireButtonClick?.Invoke(item); });
+                hire.RegisterCallback<ClickEvent>((evt) => { OnHireButtonClick?.Invoke(item); TabControl.RefreshTab(); });
                 var level = content.Q<Label>(k_ContentLevelLabel);
                 level.text = item.worker.unlockedLevel.ToString();
 

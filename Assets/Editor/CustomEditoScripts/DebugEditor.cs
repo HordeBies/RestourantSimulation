@@ -7,8 +7,8 @@ using UnityEngine;
 [InitializeOnLoad]
 public class DebugEditor : Editor
 {
-	[MenuItem("Bies/Reset Cafe")]
-	static void ResetCafe()
+	[MenuItem("Bies/Clear Cafe")]
+	static void ClearCafe()
 	{
         if (!Application.isPlaying) return;
         var manager = GameDataManager.instance;
@@ -19,7 +19,24 @@ public class DebugEditor : Editor
         {
             constr.Demolish(placed[0].Data,placed[0].pos);
         }
+        foreach (var item in manager.gameData.ChefData)
+        {
+            if (item.behaviour == null) continue;
+            constr.Demolish(item.behaviour.placedObject, default);
+            item.isHired = false;
+        }
+        foreach (var item in manager.gameData.ServerData)
+        {
+            if (item.behaviour == null) continue;
+            constr.Demolish(item.behaviour.placedObject, default);
+            item.isHired = false;
+        }
+        foreach (var item in manager.gameData.CookBookData)
+        {
+            item.isLearned = false;
+        }
         manager.gameData.gold = gold;
+        manager.UpdateFunds();
 	}
     [MenuItem("Bies/Reset Progress")]
     static void ResetProgress()
@@ -33,7 +50,7 @@ public class DebugEditor : Editor
     {
         if (!Application.isPlaying) return;
         GameManager.instance.SwitchToDefaultMode();
-        ResetCafe();
+        ClearCafe();
         var manager = ConstructionManager.instance;
         var cafe = CafeSimulationManager.instance;
         

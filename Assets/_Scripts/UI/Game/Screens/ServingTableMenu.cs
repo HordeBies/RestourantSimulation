@@ -70,7 +70,7 @@ namespace Bies.Game.UI
                 MealIcon.style.backgroundImage = new(reference.meal.Icon);
                 MealName.text = reference.meal.MealName;
                 MealServings.text = reference.remainingServings.ToString();
-                MealPrice.text = "99$"; //TODO: Add Meal Price to the Meal SO
+                MealPrice.text = reference.meal.PortionPrice.ToString(); //TODO: Add Meal Price to the Meal SO
             }
             else
             {

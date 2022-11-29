@@ -32,7 +32,15 @@ public class GameDataManager : MonoBehaviour
         var dir = obj.dir;
         var pos = obj.origin;
         var behaviour = obj.GetComponent<BaseBehaviour>();
-        if (behaviour is NPCBehaviour) return;
+        if(behaviour is NPCBehaviour)
+        {
+            if (behaviour is ChefBehaviour)
+                gameData.ChefData.Find(i => i.worker == behaviour.GetData()).behaviour = (NPCBehaviour)behaviour;
+            if(behaviour is ServerBehaviour)
+                gameData.ServerData.Find(i => i.worker == behaviour.GetData()).behaviour = (NPCBehaviour)behaviour;
+
+            return;
+        }
 
         if (!load)
         {
@@ -60,6 +68,17 @@ public class GameDataManager : MonoBehaviour
         SellObject(obj.placedObjectTypeSO);
         Debug.Log($"Removed {count} object!");
     }
+    public void PurchaseMeal(Meal meal)
+    {
+        gameData.gold -= meal.PrepPrice;
+        OnFundsUpdated?.Invoke(gameData);
+    }
+    public void HireWorker(GameData.WorkerData hired)
+    {
+        gameData.gold -= hired.worker.price;
+        OnFundsUpdated?.Invoke(gameData);
+        hired.isHired = true;
+    }
     public void GainExperience(int amount)
     {
         gameData.exp += amount;
@@ -68,5 +87,9 @@ public class GameDataManager : MonoBehaviour
         {
             gameData.level++;
         }
+    }
+    public void UpdateFunds()
+    {
+        OnFundsUpdated?.Invoke(gameData);
     }
 }

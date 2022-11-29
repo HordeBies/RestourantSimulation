@@ -138,7 +138,7 @@ namespace Bies.Game
             servingTableMenu.Populate(data);
             servingTableMenu.ShowScreen();
         }
-        public void ShowMenu(List<Meal> data, CookingOvenMenu parent)
+        public void ShowMenu(List<GameData.MealData> data, CookingOvenMenu parent)
         {
             mealSelectionMenu.Populate(data, parent);
             mealSelectionMenu.ShowScreen();

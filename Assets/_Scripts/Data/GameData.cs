@@ -45,6 +45,9 @@ public class GameData
         foreach (var item in DataBase.wallPapers)
             Storage.wallPapers.Add((item));
 
+        foreach (var item in DataBase.meals)
+            CookBookData.Add(new(item));
+
         foreach (var item in DataBase.chefs)
             ChefData.Add(new(item));
         foreach (var item in DataBase.servers)
@@ -101,6 +104,11 @@ public class GameData
     [System.Serializable]
     public class MealData
     {
+        public MealData(Meal meal, bool isLearned = false)
+        {
+            this.meal = meal;
+            this.isLearned = isLearned;
+        }
         public Meal meal;
         public bool isLearned;
     }
@@ -109,12 +117,13 @@ public class GameData
     [System.Serializable]
     public class WorkerData
     {
-        public WorkerData(GridObject worker)
+        public WorkerData(GridObject worker, bool isHired = false)
         {
             this.worker = worker;
-            isHired = false;
+            this.isHired = isHired;
         }
         public GridObject worker;
         public bool isHired;
+        public NPCBehaviour behaviour;
     }
 }
