@@ -37,3 +37,9 @@ Tech Stack includes:
 - Challanges and Leaderboards
 - Purchaseable cafe grid expansions
 - Friends and Global Chat
+
+# Some In Game Footages
+![](https://github.com/HordeBies/RestourantSimulation/blob/main/InGameFootages/Construct%20buildings.gif)
+![](https://github.com/HordeBies/RestourantSimulation/blob/main/InGameFootages/Hire%20and%20Assign%20a%20Chef.gif)
+![](https://github.com/HordeBies/RestourantSimulation/blob/main/InGameFootages/Prepare%20and%20Serve%20a%20Meal.gif)
+![](https://github.com/HordeBies/RestourantSimulation/blob/main/InGameFootages/Hire%20a%20Server%20and%20Serve%20Meal.gif)
