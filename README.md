@@ -11,7 +11,7 @@ Tech Stack includes:
 
 
 #Game Mechanics
--Grid Building System
+##Grid Building System
   -Chairs
   -Dining Tables
   -Doors
@@ -19,11 +19,11 @@ Tech Stack includes:
   -WallPapers
   -Cooking Places
   -Serving Tables
--Restourant Simulation
+##Restourant Simulation
   -Customers (Dining Places)
   -Workers (Servers & Chefs)
   -Meals (Cooking Places & Serving Tables)
--Progression
+##Progression
   -Level System (Unlocks more buildings and hireable workers)
   -Currencies (Gold & Crystal)
   -CookBook (Unlockable meal recipes)
