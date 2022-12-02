@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 2
   nameString: Default Cooking Oven
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 11bed2b951c558448a1d288039d8d256, type: 3}
   prefab: {fileID: 3694927253147208259, guid: 6eb95fe4dc6f5ee44aa533cd29a4b713, type: 3}
   visual: {fileID: 3694927253147208259, guid: 6eb95fe4dc6f5ee44aa533cd29a4b713, type: 3}
   width: 1

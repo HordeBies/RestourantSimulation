@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 3
   nameString: Default Dining Table
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 11bed2b951c558448a1d288039d8d256, type: 3}
   prefab: {fileID: 1151263135451177714, guid: 29543e288ed795046917e3ccfdfa588b, type: 3}
   visual: {fileID: 1151263135451177714, guid: 29543e288ed795046917e3ccfdfa588b, type: 3}
   width: 1

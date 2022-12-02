@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   nameString: Chair 2
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 11bed2b951c558448a1d288039d8d256, type: 3}
   prefab: {fileID: 7563335285279829324, guid: 49c24efe21795334eae073b66edcfc6f, type: 3}
   visual: {fileID: 7563335285279829324, guid: 49c24efe21795334eae073b66edcfc6f, type: 3}
   width: 1

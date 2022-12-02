@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 5
   nameString: Default Serving Table
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 11bed2b951c558448a1d288039d8d256, type: 3}
   prefab: {fileID: 6769255032000720841, guid: 1601d90a7254e2c4faadf1e1b6a0995c, type: 3}
   visual: {fileID: 6769255032000720841, guid: 1601d90a7254e2c4faadf1e1b6a0995c, type: 3}
   width: 1

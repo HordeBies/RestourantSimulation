@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 10
   nameString: "Ali T\xFCrk"
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 11bed2b951c558448a1d288039d8d256, type: 3}
   prefab: {fileID: 7921875928063873020, guid: bf3eb323ba9703d4996c77acfb674a1e, type: 3}
   visual: {fileID: 7921875928063873020, guid: 69fa0e1cfe9b06a4abfa4f34d155666d, type: 3}
   width: 1

@@ -1374,7 +1374,7 @@ MonoBehaviour:
     gems: 10
     level: 1
     exp: 0
-    username: Guest_3169
+    username: Guest_Cafe
     Storage:
       diningTables: []
       chairs: []
@@ -1385,6 +1385,8 @@ MonoBehaviour:
       wallPapers: []
     CafePlacedObjects: []
     CookBookData: []
+    ChefData: []
+    ServerData: []
 --- !u!1 &1065981916
 GameObject:
   m_ObjectHideFlags: 0

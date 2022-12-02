@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 8
   nameString: Default Customer
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 11bed2b951c558448a1d288039d8d256, type: 3}
   prefab: {fileID: 1446641072577973272, guid: b0512cab5e63c3f429659709be95ab2c, type: 3}
   visual: {fileID: 1446641072577973272, guid: b0512cab5e63c3f429659709be95ab2c, type: 3}
   width: 1

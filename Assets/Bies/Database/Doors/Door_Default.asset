@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 7
   nameString: Default Door
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 11bed2b951c558448a1d288039d8d256, type: 3}
   prefab: {fileID: 7750604143794436174, guid: 753db9ed7b417d945a6576dedd473230, type: 3}
   visual: {fileID: 7750604143794436174, guid: 753db9ed7b417d945a6576dedd473230, type: 3}
   width: 1

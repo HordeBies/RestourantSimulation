@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 9
   nameString: Default Chef
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 11bed2b951c558448a1d288039d8d256, type: 3}
   prefab: {fileID: 1932636370359880211, guid: 4ff3a5d83d8397b4e85d556959b31177, type: 3}
   visual: {fileID: 1932636370359880211, guid: 4ff3a5d83d8397b4e85d556959b31177, type: 3}
   width: 1
