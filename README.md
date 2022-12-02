@@ -39,6 +39,7 @@ Tech Stack includes:
 - Friends and Global Chat
 
 # Some In Game Footages
+p.s. Click on the images to open in new tab
 ![](https://github.com/HordeBies/RestourantSimulation/blob/main/InGameFootages/Construct%20buildings.gif)
 ![](https://github.com/HordeBies/RestourantSimulation/blob/main/InGameFootages/Hire%20and%20Assign%20a%20Chef.gif)
 ![](https://github.com/HordeBies/RestourantSimulation/blob/main/InGameFootages/Prepare%20and%20Serve%20a%20Meal.gif)
