@@ -20,9 +20,9 @@ Tech Stack includes:
 - Cooking Places
 - Serving Tables
 ## Restourant Simulation
-- Customers (Dining Places)
+- Customers
 - Workers (Servers & Chefs)
-- Meals (Cooking Places & Serving Tables)
+- Meals
 ## Progression
 - Level System (Unlocks more buildings and hireable workers)
 - Currencies (Gold & Crystal)
